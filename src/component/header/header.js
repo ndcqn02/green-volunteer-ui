@@ -17,7 +17,7 @@ const products = [
   {
     name: "Du lịch tình nguyện",
     description: "Chương trình tình nguyện kết hợp với trải nghiệm khám phá văn hóa địa phương.",
-    href: "#",
+    href: "/pages/volunteerTravel",
     icon: ChartPieIcon,
   },
   {
@@ -90,7 +90,7 @@ export default function Header() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="flex items-center -m-1.5 p-1.5">
+          <a href="/" className="flex items-center -m-1.5 p-1.5">
             <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
