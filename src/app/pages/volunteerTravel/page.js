@@ -4,13 +4,14 @@ import Image from "next/image";
 
 import img1 from "../../../../public/image/moitruong.jpg";
 import Footer from "@/component/footer/footer";
+import Link from "next/link";
 
 const activities = [
   {
     id: 1,
     title: "Tình nguyện Xanh",
     body: "",
-    href: "#",
+    href: "",
     timeStart: "17-11-2023",
     time_end: "20-11-2023",
     address: "Đa Phước - An Giang",
@@ -20,7 +21,6 @@ const activities = [
     id: 2,
     title: "Tình nguyện Xanh",
     body: "",
-    href: "#",
     timeStart: "17-11-2023",
     time_end: "20-11-2023",
     address: "Đa Phước - An Giang",
@@ -30,7 +30,6 @@ const activities = [
     id: 3,
     title: "Tình nguyện Xanh",
     body: "",
-    href: "#",
     timeStart: "17-11-2023",
     time_end: "20-11-2023",
     address: "Đa Phước - An Giang",
@@ -40,7 +39,42 @@ const activities = [
     id: 4,
     title: "Tình nguyện Xanh",
     body: "",
-    href: "#",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 5,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 6,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 7,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 8,
+    title: "Tình nguyện Xanh",
+    body: "",
     timeStart: "17-11-2023",
     time_end: "20-11-2023",
     address: "Đa Phước - An Giang",
@@ -51,31 +85,31 @@ const activities = [
 
 const people = [
   {
-    name: 'Nguyễn Đức Cường',
-    role: 'Co-Founder / CEO',
+    name: "Nguyễn Đức Cường",
+    role: "Co-Founder / CEO",
     imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
-    name: 'Võ Trần Trung Anh',
-    role: 'Co-Founder / CEO',
+    name: "Võ Trần Trung Anh",
+    role: "Co-Founder / CEO",
     imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
-    name: 'Phan kiên',
-    role: 'Co-Founder / CEO',
+    name: "Phan kiên",
+    role: "Co-Founder / CEO",
     imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
-    name: 'Lê Thu',
-    role: 'Co-Founder / CEO',
+    name: "Lê Thu",
+    role: "Co-Founder / CEO",
     imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   // More people...
-]
+];
 
 export default function volunteerTravel() {
   return (
@@ -169,70 +203,91 @@ export default function volunteerTravel() {
         <div className="mx-auto max-w-2xl lg:max-w-7xl">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {activities.map((activity) => (
-              <div key={activity.id} className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md">
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
-                  <img
-                    src={activity.imageSrc}
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                  />
-                </div>
-                <div className="mt-4 w-full ">
-                  <div>
-                    <h3 className="text-2xl text-gray-700">
-                      <a href={activity.href}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {activity.title}
-                      </a>
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-500">
-                      <span className="mr-10">Nơi khởi hành:</span>
-                      {activity.address}
-                    </p>
-                    <p className="mt-1 text-sm text-gray-500">
-                      <span className="mr-10">Ngày khởi hành:</span>{" "}
-                      {activity.timeStart}
-                    </p>
-                    <p className="mt-1 text-sm text-gray-500">
-                      <span className="mr-10">Ngày kết thúc:</span>
-                      {activity.time_end}
-                    </p>
-                  </div>
-                </div> 
-                <button
-                  type="button"
-                  className="text-white w-full mt-5 m-auto bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                <div
+                  key={activity.id}
+                  className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
                 >
-                  Đăng kí tham gia
-                </button>
-              </div>
+                  <Link href={`/pages/activities/${activity.id}`}>
+                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+                    <img
+                      src={activity.imageSrc}
+                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                    />
+                  </div>
+                  <div className="mt-4 w-full ">
+                    <div>
+                      <h3 className="text-2xl text-gray-700">
+                        <a href={activity.href}>
+                          <span
+                            aria-hidden="true"
+                            className="absolute inset-0"
+                          />
+                          {activity.title}
+                        </a>
+                      </h3>
+                      <p className="mt-1 text-sm text-gray-500">
+                        <span className="mr-10">Nơi khởi hành:</span>
+                        {activity.address}
+                      </p>
+                      <p className="mt-1 text-sm text-gray-500">
+                        <span className="mr-10">Ngày khởi hành:</span>{" "}
+                        {activity.timeStart}
+                      </p>
+                      <p className="mt-1 text-sm text-gray-500">
+                        <span className="mr-10">Ngày kết thúc:</span>
+                        {activity.time_end}
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    className="text-white w-full mt-5 m-auto bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                  >
+                    Đăng kí tham gia
+                  </button>
+                </Link>
+                </div>
             ))}
           </div>
         </div>
       </div>
 
       <div className="bg-gray-100 mt-8 py-12 sm:py-24">
-      <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Được dẫn dắt bởi Leader giàu kinh nghiệm</h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+        <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Được dẫn dắt bởi Leader giàu kinh nghiệm
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
               Leader nổi tiếng trên cả nước về tình nguyện
-          </p>
-        </div>
-        <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
-          {people.map((person) => (
-            <li key={person.name}>
-              <div className="flex items-center gap-x-6">
-                <img className="h-16 w-16 rounded-full" src={person.imageUrl} alt="" />
-                <div>
-                  <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">{person.name}</h3>
-                  <p className="text-sm font-semibold leading-6 text-indigo-600">{person.role}</p>
+            </p>
+          </div>
+          <ul
+            role="list"
+            className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
+          >
+            {people.map((person) => (
+              <li key={person.name}>
+                <div className="flex items-center gap-x-6">
+                  <img
+                    className="h-16 w-16 rounded-full"
+                    src={person.imageUrl}
+                    alt=""
+                  />
+                  <div>
+                    <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
+                      {person.name}
+                    </h3>
+                    <p className="text-sm font-semibold leading-6 text-indigo-600">
+                      {person.role}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
 
       <Footer />
     </>

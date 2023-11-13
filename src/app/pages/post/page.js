@@ -1,4 +1,6 @@
-export default function post() {
+
+
+export default function about() {
     return(
         <>This is post</>
     )
