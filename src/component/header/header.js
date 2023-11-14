@@ -59,7 +59,7 @@ const campaigns = [
   {
     name: "Các chiến dịch đang hoạt động",
     description: "Các chiến dịch đang trong quá trình hoạt động.",
-    href: "#",
+    href: "/pages/post",
     icon: ChartPieIcon,
   },
   {

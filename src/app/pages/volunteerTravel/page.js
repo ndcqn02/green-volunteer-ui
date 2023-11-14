@@ -1,87 +1,14 @@
+"use client"
+
 import Header from "@/component/header/header";
 import { ChartPieIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-
+import axios from 'axios';
 import img1 from "../../../../public/image/moitruong.jpg";
 import Footer from "@/component/footer/footer";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const activities = [
-  {
-    id: 1,
-    title: "Tình nguyện Xanh",
-    body: "",
-    href: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 2,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 3,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 4,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 5,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 6,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 7,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 8,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  // More products...
-];
 
 const people = [
   {
@@ -111,7 +38,28 @@ const people = [
   // More people...
 ];
 
+const api = axios.create({
+  baseURL: 'https://655238c15c69a7790329b9a2.mockapi.io/api/activities',
+});
+
 export default function volunteerTravel() {
+  const [apiData, setApiData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get('/activity');
+        setApiData(response.data);
+        console.log("response.data: ", response.data);
+      } catch (error) {
+        console.error('Error fetching data from API:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
   return (
     <>
       <Header />
@@ -202,7 +150,7 @@ export default function volunteerTravel() {
 
         <div className="mx-auto max-w-2xl lg:max-w-7xl">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {activities.map((activity) => (
+            {apiData.map((activity) => (
                 <div
                   key={activity.id}
                   className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"

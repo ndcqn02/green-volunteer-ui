@@ -47,7 +47,7 @@ const activitiess = [
     },
     // More products...
   ];
-export default function DetailAct() {
+export default function DetailPost() {
   const activities = [
     {
       id: 1,
