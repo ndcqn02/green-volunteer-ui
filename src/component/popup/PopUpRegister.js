@@ -2,25 +2,25 @@
 
 import Image from "next/image";
 import img14 from "../../../public/image/img14.jpg";
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const api = axios.create({
-    baseURL:''
+    baseURL: ''
 })
 
 const apiUsers1 = [
     {
         id: 1,
         username: "Pham Van Dat",
-        phone:"0399939239",
-        email:"nguyenvana@gmail.com",
-        school:"Trường đại học Sư phạm kỹ thuật-DHDN"
+        phone: "0399939239",
+        email: "nguyenvana@gmail.com",
+        school: "Trường đại học Sư phạm kỹ thuật-DHDN"
     },
 ];
 
-export default function popuptnv ({visible, onClose}){
-    const handleOnClose = () =>{
+export default function PopUpRegister({ visible, onClose }) {
+    const handleOnClose = () => {
         onClose();
     };
 
@@ -28,13 +28,13 @@ export default function popuptnv ({visible, onClose}){
 
     useEffect(() => {
         const fetchData = async () => {
-        try {
-            const response = await api.get('/users');
-            setApiUsers(response.data);
-            console.log("response.data: ", response.data);
-        } catch (error) {
-            console.error('Error fetching data from API:', error);
-        }
+            try {
+                const response = await api.get('/users');
+                setApiUsers(response.data);
+                console.log("response.data: ", response.data);
+            } catch (error) {
+                console.error('Error fetching data from API:', error);
+            }
         };
 
         fetchData();
@@ -42,11 +42,11 @@ export default function popuptnv ({visible, onClose}){
 
     if (!visible) return null;
 
-    return(
+    return (
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center">
             <div className="w-[1200px] h-[660px] relative">
                 <div className="">
-                    <Image 
+                    <Image
                         src={img14}
                         alt="picture"
                         className="w-[550px] h-[660px] object-cover opacity rounded-r-[140px]"
@@ -112,12 +112,15 @@ export default function popuptnv ({visible, onClose}){
                                         value={apiUsers1[0].school}
                                     ></input>
                                 </div>
-                                
+
                             </div>
                             <div className="bg-white rouded-lg w-full space-y-1 font-light rounded-lg flex flex-row space-x-4">
-                                <img
+                                <Image
                                     src="https://veo.com.vn/wp-content/uploads/2020/03/MCC2-740x490.jpeg"
                                     className="h-[152px] w-[240px] rounded-l-lg "
+                                    alt=""
+                                    width={500}
+                                    height={500}
                                 />
                                 <div className="flex flex-col justify-center ">
                                     <h1 className="font-bold">DU LỊCH TÌNH NGUYỆN VÂN HỒ –SƠN LA</h1>

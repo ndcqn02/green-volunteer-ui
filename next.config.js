@@ -3,12 +3,18 @@ const nextConfig = {
   images: {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    domains: ['tailwindui.com', 'images.unsplash.com', 'lawnet.vn'],
+    domains: ['tailwindui.com'],
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'lawnet.vn',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
         port: '',
         pathname: '/**',
       },
@@ -27,6 +33,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cdnimg.vietnamplus.vn',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'veo.com.vn',
         port: '',
         pathname: '/**',
       },
