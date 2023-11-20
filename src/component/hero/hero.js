@@ -7,7 +7,7 @@ import img2 from "../../../public/image/img4.jpg";
 import img4 from "../../../public/image/img5.avif"
 import { useState } from "react";
 
-const callouts = [
+const callOuts = [
   {
     name: "Cleaning up the Danube",
     description:
@@ -39,7 +39,7 @@ const callouts = [
   },
 ];
 
-export default function hero() {
+export default function Hero() {
   const [accordionStates, setAccordionStates] = useState([false, false, false]);
 
   const toggleAccordion = (index) => {
@@ -164,6 +164,8 @@ export default function hero() {
             src={img1}
             alt="picture"
             className="w-full h-full object-cover"
+            width={500}
+            height={500}
           />
         </div>
 
@@ -186,13 +188,15 @@ export default function hero() {
         </div>
 
         <div className="bg-red-900 w-60 h-80 rounded-[20px] relative overflow-hidden">
-        <p className="absolute bg-white rounded-2xl px-3 mt-64 w-auto mx-3">
+          <p className="absolute bg-white rounded-2xl px-3 mt-64 w-auto mx-3">
             Share with us your results specicalists
           </p>
           <Image
             src={img4}
             alt="picture"
             className="w-full h-full object-cover"
+            width={500}
+            height={500}
           />
         </div>
         <div className="bg-white w-60 h-60 rounded-[20px] relative overflow-hidden">
@@ -218,6 +222,8 @@ export default function hero() {
             src={img2}
             alt="picture"
             className=" w-full h-full object-cover"
+            width={500}
+            height={500}
           />
         </div>
         <div className="dark:bg-lime-200 dark:focus:ring-lime-600 flex relative w-40 h-40 rounded-[20px] overflow-hidden">
@@ -293,13 +299,14 @@ export default function hero() {
             </h2>
 
             <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
-              {callouts.map((callout) => (
+              {callOuts.map((callout) => (
                 <div key={callout.name} className="group relative">
                   <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
-                    <img
-                      src={callout.imageSrc}
+                    <Image src={callout.imageSrc}
                       alt={callout.imageAlt}
                       className="h-full w-full  object-center"
+                      width={500}
+                      height={500}
                     />
                   </div>
                   <h3 className="mt-6 text-sm text-gray-500">
@@ -325,9 +332,8 @@ export default function hero() {
           {accordionStates.map((isOpen, index) => (
             <div
               key={index}
-              className={`accordion m-auto bg-lime-300 rounded-2xl p-6 mt-5 ${
-                isOpen ? "open" : ""
-              }`}
+              className={`accordion m-auto bg-lime-300 rounded-2xl p-6 mt-5 ${isOpen ? "open" : ""
+                }`}
             >
               <div
                 className="accordion-header"

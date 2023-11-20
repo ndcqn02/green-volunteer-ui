@@ -7,46 +7,47 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
 import Footer from "../footer/footer";
 import Link from "next/link";
+import Image from "next/image";
 const activitiess = [
-    {
-      id: 1,
-      title: "Tình nguyện Xanh",
-      body: "",
-      href: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    {
-      id: 2,
-      title: "Tình nguyện Xanh",
-      body: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    {
-      id: 3,
-      title: "Tình nguyện Xanh",
-      body: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    {
-      id: 4,
-      title: "Tình nguyện Xanh",
-      body: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    // More products...
-  ];
+  {
+    id: 1,
+    title: "Tình nguyện Xanh",
+    body: "",
+    href: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 2,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 3,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 4,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  // More products...
+];
 export default function DetailPost() {
   const activities = [
     {
@@ -138,44 +139,52 @@ export default function DetailPost() {
         </div>
       </div>
 
-      
+
       {/* detail */}
       <div className="bg-white">
         {activities.map((activities) => (
-          <div className="pt-6">
+          <div className="pt-6" key={activities.id}>
             {/* Image gallery */}
             <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
               <div
-                key={activities.id}
+
                 className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block"
               >
-                <img
+                <Image
                   src={activities.images[0].src}
                   alt={activities.images[0].alt}
                   className="h-full w-full object-cover object-center"
+                  width={500}
+                  height={500}
                 />
               </div>
               <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
                 <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                  <img
+                  <Image
                     src={activities.images[1].src}
                     alt={activities.images[1].alt}
                     className="h-full w-full object-cover object-center"
+                    width={500}
+                    height={500}
                   />
                 </div>
                 <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                  <img
+                  <Image
                     src={activities.images[2].src}
                     alt={activities.images[2].alt}
                     className="h-full w-full object-cover object-center"
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
               <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
-                <img
+                <Image
                   src={activities.images[3].src}
                   alt={activities.images[3].alt}
                   className="h-full w-full object-cover object-center"
+                  width={500}
+                  height={500}
                 />
               </div>
             </div>
@@ -284,8 +293,8 @@ export default function DetailPost() {
         ))}
       </div>
 
-            {/* Slide */}
-            <div className=" mt-0 max-w-7xl m-auto ">
+      {/* Slide */}
+      <div className=" mt-0 max-w-7xl m-auto ">
         <h1 className="mx-auto text-2xl font-bold tracking-tight text-gray-900">
           Các chương trình du lịch tình nguyện tương tự
         </h1>
@@ -293,15 +302,18 @@ export default function DetailPost() {
         <div className="mx-auto max-w-2xl lg:max-w-7xl">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {activitiess.map((activity) => (
-                <div
-                  key={activity.id}
-                  className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
-                >
-                  <Link href={`/pages/activities/${activity.id}`}>
+              <div
+                key={activity.id}
+                className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
+              >
+                <Link href={`/pages/activities/${activity.id}`}>
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
-                    <img
+                    <Image
                       src={activity.imageSrc}
                       className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                      alt=""
+                      width={500}
+                      height={500}
                     />
                   </div>
                   <div className="mt-4 w-full ">
@@ -336,7 +348,7 @@ export default function DetailPost() {
                     Đăng kí tham gia
                   </button>
                 </Link>
-                </div>
+              </div>
             ))}
           </div>
         </div>

@@ -42,7 +42,7 @@ const api = axios.create({
   baseURL: 'https://655238c15c69a7790329b9a2.mockapi.io/api/activities',
 });
 
-export default function volunteerTravel() {
+export default function VolunteerTravel() {
   const [apiData, setApiData] = useState([]);
 
   useEffect(() => {
@@ -102,6 +102,8 @@ export default function volunteerTravel() {
               src={img1}
               alt="picture"
               className="w-full h-full object-cover opacity-80"
+              width={5000}
+              height={5000} 
             />
             <div className="absolute inset-0 text-white">
               <div className="text-center mt-[350px]">
@@ -151,15 +153,18 @@ export default function volunteerTravel() {
         <div className="mx-auto max-w-2xl lg:max-w-7xl">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {apiData.map((activity) => (
-                <div
-                  key={activity.id}
-                  className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
-                >
-                  <Link href={`/pages/activities/${activity.id}`}>
+              <div
+                key={activity.id}
+                className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
+              >
+                <Link href={`/pages/activities/${activity.id}`}>
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
-                    <img
+                    <Image
                       src={activity.imageSrc}
                       className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                      alt=""
+                      width={500}
+                      height={500}
                     />
                   </div>
                   <div className="mt-4 w-full ">
@@ -194,7 +199,7 @@ export default function volunteerTravel() {
                     Đăng kí tham gia
                   </button>
                 </Link>
-                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -217,10 +222,13 @@ export default function volunteerTravel() {
             {people.map((person) => (
               <li key={person.name}>
                 <div className="flex items-center gap-x-6">
-                  <img
-                    className="h-16 w-16 rounded-full"
+                  <Image
+                    className="h-16 w-16"
                     src={person.imageUrl}
                     alt=""
+                    width={500}
+                    height={500}
+
                   />
                   <div>
                     <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">

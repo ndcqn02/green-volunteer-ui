@@ -12,6 +12,7 @@ import {
   XMarkIcon,
   RectangleGroupIcon,
 } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 const products = [
   {
@@ -91,10 +92,12 @@ export default function Header() {
       >
         <div className="flex lg:flex-1">
           <a href="/" className="flex items-center -m-1.5 p-1.5">
-            <img
-              className="h-8 w-auto"
+            <Image
+              className="h-8"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
+              alt="Landscape picture"
+              width={50}
+              height={50}
             />
             <span className="ml-2 text-black font-semibold">Green Volunteer</span>
           </a>
@@ -116,7 +119,7 @@ export default function Header() {
                 className=" h-5 w-5 flex-none text-gray-400"
                 aria-hidden="true"
               />
-                Các dự án
+              Các dự án
             </Popover.Button>
 
             <Transition
@@ -164,7 +167,7 @@ export default function Header() {
                 className=" h-5 w-5 flex-none text-gray-400"
                 aria-hidden="true"
               />
-                Tin tức
+              Tin tức
             </Popover.Button>
 
             <Transition
@@ -212,7 +215,7 @@ export default function Header() {
                 className=" h-5 w-5 flex-none text-gray-400"
                 aria-hidden="true"
               />
-                Chiến dịch
+              Chiến dịch
             </Popover.Button>
 
             <Transition
@@ -274,10 +277,11 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
-                className="h-8 w-auto"
+              <Image
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt=""
+                width="32"
+                height="32"
               />
             </a>
             <button
@@ -306,7 +310,7 @@ export default function Header() {
                         />
                       </Disclosure.Button>
                       <Disclosure.Panel className="mt-2 space-y-2">
-                        
+
                       </Disclosure.Panel>
                     </>
                   )}

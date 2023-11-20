@@ -1,6 +1,7 @@
 import { ChartPieIcon } from "@heroicons/react/24/outline";
 import Header from "../../../component/header/header";
 import Footer from "../../../component/footer/footer"
+import Image from "next/image";
 
 const posts = [
   {
@@ -143,7 +144,7 @@ export default function about() {
         <div className=" max-w-7xl h-[400px] m-auto mt-4 flex">
           <div className="">
             <div className="w-[500px] ml-11 mt-11 mr-11">
-              <img src="https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg" />
+              <Image src="https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg" alt="" width={500} height={500} />
               <p className="">Tháng 11 đồng hành cùng chúng tôi</p>
               <p>
                 Trong sự kiện tháng 10 này chúng tôi tổ chức rất nhiều hoạt động
@@ -153,9 +154,12 @@ export default function about() {
           </div>
           <div className="ml-5 flex justify-around flex-col">
             <div className="bg-gray-100 flex rounded-lg p-4">
-              <img
-                className="h-12 "
+              <Image
+                className="h-12 w-auto "
                 src="https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg"
+                alt=""
+                height={500}
+                width={500}
               />
               <div className="ml-2">
                 <p className="">Chia sẻ hoàn cảnh khó khăn cùng chúng tôi</p>
@@ -167,9 +171,12 @@ export default function about() {
             </div>
 
             <div className="bg-gray-100 flex rounded-lg p-4">
-              <img
-                className="h-12 "
+              <Image
+                className="h-12 w-auto"
                 src="https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg"
+                alt=""
+                height={500}
+                width={500}
               />
               <div className="ml-2">
                 <p className="">Chia sẻ hoàn cảnh khó khăn cùng chúng tôi</p>
@@ -181,9 +188,12 @@ export default function about() {
             </div>
 
             <div className="bg-gray-100 flex rounded-lg p-4">
-              <img
-                className="h-12 "
+              <Image
+                className="h-12 w-auto"
                 src="https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg"
+                alt=""
+                height={100}
+                width={300}
               />
               <div className="ml-2">
                 <p className="">Chia sẻ hoàn cảnh khó khăn cùng chúng tôi</p>
@@ -195,9 +205,12 @@ export default function about() {
             </div>
 
             <div className="bg-gray-100 flex rounded-lg p-4">
-              <img
-                className="h-12 "
+              <Image
+                className="h-12 w-auto"
                 src="https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg"
+                alt=""
+                height={500}
+                width={500}
               />
               <div className="ml-2">
                 <p className="">Chia sẻ hoàn cảnh khó khăn cùng chúng tôi</p>
@@ -224,9 +237,12 @@ export default function about() {
                 key={post.id}
                 className="flex max-w-xl flex-col items-start"
               >
-                <img
+                <Image
                   src={post.image}
                   className="object-cover object-center lg:h-1/3 lg:w-full"
+                  alt=""
+                  height={500}
+                  width={500}
                 />
                 <div className="flex items-center gap-x-4 text-xs">
                   <time dateTime={post.datetime} className="text-gray-500">
@@ -251,97 +267,97 @@ export default function about() {
       </div>
 
       <div className="max-w-6xl m-auto">
-      <nav aria-label="Page navigation example">
-        <ul class="flex items-center -space-x-px h-8 text-sm">
-          <li>
-            <a
-              href="#"
-              class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              <span class="sr-only">Previous</span>
-              <svg
-                class="w-2.5 h-2.5 rtl:rotate-180"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
+        <nav aria-label="Page navigation example">
+          <ul className="flex items-center -space-x-px h-8 text-sm">
+            <li>
+              <a
+                href="#"
+                className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 1 1 5l4 4"
-                />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              1
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              2
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              aria-current="page"
-              class="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-            >
-              3
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              4
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              5
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              <span class="sr-only">Next</span>
-              <svg
-                class="w-2.5 h-2.5 rtl:rotate-180"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
+                <span className="sr-only">Previous</span>
+                <svg
+                  className="w-2.5 h-2.5 rtl:rotate-180"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 6 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 1 1 5l4 4"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 9 4-4-4-4"
-                />
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </nav>
+                1
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              >
+                2
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                aria-current="page"
+                className="z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+              >
+                3
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              >
+                4
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              >
+                5
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              >
+                <span className="sr-only">Next</span>
+                <svg
+                  className="w-2.5 h-2.5 rtl:rotate-180"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 6 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m1 9 4-4-4-4"
+                  />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
 
       <Footer />
