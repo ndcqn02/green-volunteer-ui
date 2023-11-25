@@ -38,27 +38,40 @@ const people = [
   // More people...
 ];
 
-const api = axios.create({
-  baseURL: 'https://655238c15c69a7790329b9a2.mockapi.io/api/activities',
-});
+// const api = axios.create({
+//   baseURL: 'https://655238c15c69a7790329b9a2.mockapi.io/api/activities',
+// });
 
 export default function VolunteerTravel() {
-  const [apiData, setApiData] = useState([]);
 
+  // const [apiData, setApiData] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await api.get('/activity');
+  //       setApiData(response.data);
+  //       console.log("response.data: ", response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching data from API:', error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+
+  const [data, setData] = useState([])
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await api.get('/activity');
-        setApiData(response.data);
-        console.log("response.data: ", response.data);
-      } catch (error) {
-        console.error('Error fetching data from API:', error);
-      }
-    };
-
-    fetchData();
+    (async () => {
+      await axios.get('http://54.169.253.94/api/activities')
+        .then(res => setData(res.data.data))
+        .catch(err => console.log(err))
+    }
+    )();
   }, []);
 
+  console.log(data.data)
 
   return (
     <>
@@ -103,7 +116,7 @@ export default function VolunteerTravel() {
               alt="picture"
               className="w-full h-full object-cover opacity-80"
               width={5000}
-              height={5000} 
+              height={5000}
             />
             <div className="absolute inset-0 text-white">
               <div className="text-center mt-[350px]">
@@ -152,7 +165,11 @@ export default function VolunteerTravel() {
 
         <div className="mx-auto max-w-2xl lg:max-w-7xl">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {apiData.map((activity) => (
+
+            {
+
+            }
+            {data.data && data.data?.map((activity) => (
               <div
                 key={activity.id}
                 className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"

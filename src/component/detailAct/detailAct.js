@@ -2,52 +2,53 @@
 
 import { ChartPieIcon } from "@heroicons/react/24/outline";
 import Header from "../header/header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
 import Footer from "../footer/footer";
 import Link from "next/link";
 import Image from "next/image";
+import axios from 'axios'
 const activitiess = [
-    {
-      id: 1,
-      title: "Tình nguyện Xanh",
-      body: "",
-      href: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    {
-      id: 2,
-      title: "Tình nguyện Xanh",
-      body: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    {
-      id: 3,
-      title: "Tình nguyện Xanh",
-      body: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    {
-      id: 4,
-      title: "Tình nguyện Xanh",
-      body: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    // More products...
-  ];
+  {
+    id: 1,
+    title: "Tình nguyện Xanh",
+    body: "",
+    href: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 2,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 3,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 4,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  // More products...
+];
 export default function DetailAct() {
   const activities = [
     {
@@ -103,6 +104,20 @@ export default function DetailAct() {
       ],
     },
   ];
+
+  const [data, setData] = useState([])
+  useEffect(() => {
+    (async () => {
+      await axios.get('http://54.169.253.94/api/activities')
+        .then(res => setData(res.data.data))
+        .catch(err => console.log(err))
+    }
+    )();
+  }, []);
+
+  console.log(data.data)
+
+
   return (
     <>
       <Header />
@@ -139,7 +154,7 @@ export default function DetailAct() {
         </div>
       </div>
 
-      
+
       {/* detail */}
       <div className="bg-white">
         {activities.map((activities) => (
@@ -147,7 +162,7 @@ export default function DetailAct() {
             {/* Image gallery */}
             <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
               <div
-                
+
                 className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block"
               >
                 <Image
@@ -293,15 +308,69 @@ export default function DetailAct() {
         ))}
       </div>
 
-            {/* Slide */}
-            <div className=" mt-0 max-w-7xl m-auto ">
+      {/* Slide */}
+      <div className=" mt-0 max-w-7xl m-auto ">
         <h1 className="mx-auto text-2xl font-bold tracking-tight text-gray-900">
           Các chương trình du lịch tình nguyện tương tự
         </h1>
 
         <div className="mx-auto max-w-2xl lg:max-w-7xl">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {activitiess.map((activity) => (
+
+            {
+              data.data && data.data?.map((item, index) => (
+
+                <div key={index}
+                  className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
+                >
+                  <Link href={`/pages/activities/${item.id}`}>
+                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+                      <Image
+                        src={item.imageSrc}
+                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                        alt=""
+                        width={500}
+                        height={500}
+                      />
+                    </div>
+                    <div className="mt-4 w-full ">
+                      <div>
+                        <h3 className="text-2xl text-gray-700">
+                          <a href={item.href}>
+                            <span
+                              aria-hidden="true"
+                              className="absolute inset-0"
+                            />
+                            {item.title}
+                          </a>
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-500">
+                          <span className="mr-10">Nơi khởi hành:</span>
+                          {item.address}
+                        </p>
+                        <p className="mt-1 text-sm text-gray-500">
+                          <span className="mr-10">Ngày khởi hành:</span>{" "}
+                          {item.timeStart}
+                        </p>
+                        <p className="mt-1 text-sm text-gray-500">
+                          <span className="mr-10">Ngày kết thúc:</span>
+                          {item.time_end}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      className="text-white w-full mt-5 m-auto bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    >
+                      Đăng kí tham gia
+                    </button>
+                  </Link>
+                </div>
+
+
+              ))
+            }
+            {/* {activitiess.map((activity) => (
                 <div
                   key={activity.id}
                   className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
@@ -349,7 +418,7 @@ export default function DetailAct() {
                   </button>
                 </Link>
                 </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
