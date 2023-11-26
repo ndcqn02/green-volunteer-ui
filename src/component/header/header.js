@@ -30,7 +30,7 @@ const products = [
   {
     name: "Chiến dịch mùa hè xanh",
     description: "là một trong những hoạt động thiết thực, có ý nghĩa, năm nào cũng được phát động, tổ chức",
-    href: "#",
+    href: "/pages/listActivities",
     icon: FingerPrintIcon,
   },
 ];
