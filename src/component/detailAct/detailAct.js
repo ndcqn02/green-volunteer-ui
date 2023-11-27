@@ -1,54 +1,53 @@
-"use client";
 
 import { ChartPieIcon } from "@heroicons/react/24/outline";
 import Header from "../header/header";
-import { useState } from "react";
-import { StarIcon } from "@heroicons/react/20/solid";
-import { RadioGroup } from "@headlessui/react";
 import Footer from "../footer/footer";
 import Link from "next/link";
 import Image from "next/image";
+
 const activitiess = [
-    {
-      id: 1,
-      title: "Tình nguyện Xanh",
-      body: "",
-      href: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    {
-      id: 2,
-      title: "Tình nguyện Xanh",
-      body: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    {
-      id: 3,
-      title: "Tình nguyện Xanh",
-      body: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    {
-      id: 4,
-      title: "Tình nguyện Xanh",
-      body: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-    },
-    // More products...
-  ];
+  {
+    id: 1,
+    title: "Tình nguyện Xanh",
+    body: "",
+    href: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 2,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 3,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  {
+    id: 4,
+    title: "Tình nguyện Xanh",
+    body: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
+  },
+  // More products...
+];
 export default function DetailAct() {
+  // const [detail, setDetail] = useState([])
+
   const activities = [
     {
       id: 1,
@@ -72,7 +71,7 @@ export default function DetailAct() {
           alt: "Model wearing plain gray basic tee.",
         },
         {
-          src: "https://cdnimg.vietnamplus.vn/t1200/Uploaded/ngtmbh/2021_09_05/ttxvn_thanh_nien_hn_phong_chong_dich.jpg",
+          src: "https://tuyengiao.vn/Uploads/2016/12/25/3tn.jpg",
           alt: "Model wearing plain white basic tee.",
         },
       ],
@@ -80,7 +79,6 @@ export default function DetailAct() {
         "Hand cut and sewn Tham quan làng văn hóa Lũng Cẩm, nơi lấy bối cảnh những thước phim nổi tiếng Chuyện củaPao",
         "Trải nghiệm độc đáo lại ngôi làng cổ tích Lô Lô Chải",
         "Chinh phục cột cờ Lũng Cú, nơi địa đầu tổ quốc.",
-        "Chinh phục Mã Pì Lèng, nơi được mệnh danh là đệ nhất hùng quan của Việt Nam.",
         "Chinh phục Mã Pì Lèng, nơi được mệnh danh là đệ nhất hùng quan của Việt Nam.",
       ],
       timeLine: [
@@ -139,17 +137,13 @@ export default function DetailAct() {
         </div>
       </div>
 
-      
       {/* detail */}
       <div className="bg-white">
-        {activities.map((activities) => (
-          <div className="pt-6" key={activities.id}>
+        {activities.map((activities, index) => (
+          <div className="pt-6" key={index}>
             {/* Image gallery */}
             <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-              <div
-                
-                className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block"
-              >
+              <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
                 <Image
                   src={activities.images[0].src}
                   alt={activities.images[0].alt}
@@ -293,8 +287,8 @@ export default function DetailAct() {
         ))}
       </div>
 
-            {/* Slide */}
-            <div className=" mt-0 max-w-7xl m-auto ">
+      {/* Slide */}
+      <div className=" mt-0 max-w-7xl m-auto ">
         <h1 className="mx-auto text-2xl font-bold tracking-tight text-gray-900">
           Các chương trình du lịch tình nguyện tương tự
         </h1>
@@ -302,11 +296,11 @@ export default function DetailAct() {
         <div className="mx-auto max-w-2xl lg:max-w-7xl">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {activitiess.map((activity) => (
-                <div
-                  key={activity.id}
-                  className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
+              <div
+                key={activity.id}
+                className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
                 >
-                  <Link href={`/pages/activities/${activity.id}`}>
+                <Link href={`/pages/activities/${activity.id || ''}`}>
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                     <Image
                       src={activity.imageSrc}
@@ -348,7 +342,7 @@ export default function DetailAct() {
                     Đăng kí tham gia
                   </button>
                 </Link>
-                </div>
+              </div>
             ))}
           </div>
         </div>

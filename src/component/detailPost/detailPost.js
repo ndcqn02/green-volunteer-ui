@@ -2,12 +2,10 @@
 
 import { ChartPieIcon } from "@heroicons/react/24/outline";
 import Header from "../header/header";
-import { useState } from "react";
-import { StarIcon } from "@heroicons/react/20/solid";
-import { RadioGroup } from "@headlessui/react";
 import Footer from "../footer/footer";
-import Link from "next/link";
 import Image from "next/image";
+import { Breadcrumbs } from "@material-tailwind/react";
+
 const activitiess = [
   {
     id: 1,
@@ -72,7 +70,7 @@ export default function DetailPost() {
           alt: "Model wearing plain gray basic tee.",
         },
         {
-          src: "https://cdnimg.vietnamplus.vn/t1200/Uploaded/ngtmbh/2021_09_05/ttxvn_thanh_nien_hn_phong_chong_dich.jpg",
+          src: "https://cdnImage.vietnamplus.vn/t1200/Uploaded/ngtmbh/2021_09_05/ttxvn_thanh_nien_hn_phong_chong_dich.jpg",
           alt: "Model wearing plain white basic tee.",
         },
       ],
@@ -139,220 +137,78 @@ export default function DetailPost() {
         </div>
       </div>
 
-
-      {/* detail */}
-      <div className="bg-white">
-        {activities.map((activities) => (
-          <div className="pt-6" key={activities.id}>
-            {/* Image gallery */}
-            <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-              <div
-
-                className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block"
-              >
-                <Image
-                  src={activities.images[0].src}
-                  alt={activities.images[0].alt}
-                  className="h-full w-full object-cover object-center"
-                  width={500}
-                  height={500}
-                />
-              </div>
-              <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-                <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                  <Image
-                    src={activities.images[1].src}
-                    alt={activities.images[1].alt}
-                    className="h-full w-full object-cover object-center"
-                    width={500}
-                    height={500}
-                  />
-                </div>
-                <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                  <Image
-                    src={activities.images[2].src}
-                    alt={activities.images[2].alt}
-                    className="h-full w-full object-cover object-center"
-                    width={500}
-                    height={500}
-                  />
-                </div>
-              </div>
-              <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
-                <Image
-                  src={activities.images[3].src}
-                  alt={activities.images[3].alt}
-                  className="h-full w-full object-cover object-center"
-                  width={500}
-                  height={500}
-                />
-              </div>
-            </div>
-
-            {/* Product info */}
-            <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
-              <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-                <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                  {activities.title}
-                </h1>
-              </div>
-
-              {/* Options */}
-              <div className="mt-6 lg:row-span-3 lg:mt-0">
-                <h2 className="text-2xl">Liên hệ chúng tôi</h2>
-                <div>
-                  <p className="mt-6">
-                    <span>Thời gian khởi hành: </span>
-                    {activities.timeStart}
-                  </p>
-                  <p className="">
-                    <span>Thời gian kết thúc: </span>
-                    {activities.timeStart}
-                  </p>
-                  <p className="">
-                    <span>Điểm đến: </span>
-                    {activities.address}
-                  </p>
-                </div>
-                <form className="mt-10">
-                  <button
-                    type="submit"
-                    className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  >
-                    Đăng kí tham gia
-                  </button>
-                  <button
-                    type="submit"
-                    className="mt-2 flex w-full items-center justify-center rounded-md border border-transparent bg-red-400 px-8 py-3 text-base font-medium text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  >
-                    Ủng hộ
-                  </button>
-                </form>
-              </div>
-
-              <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
-                {/* Description and details */}
-                <div>
-                  <h3 className="sr-only">Description</h3>
-
-                  <div className="space-y-6">
-                    <p className="text-base text-gray-900">
-                      Mục tiêu dự án Dự án nhằm duy trì và bảo tồn giá trị văn
-                      hóa của người dân tộc Lô Lô Chải thông qua các hoạt động
-                      hỗ trợ, tu sửa và phát triển mô hình du lịch Homestay “
-                      Nhà Trình Tường” – một nét đẹp trong giá trị văn hóa của
-                      người dân nơi cực bắc Tổ Quốc. Thông qua các hoạt động hỗ
-                      trợ thiết thực như đào tạo kỹ năng việc làm, dạy học phi
-                      chính quy, quảng bá, truyền thông về hình ảnh du lịch cộng
-                      đồng tại địa phương, tổ chức các chương trình du lịch trải
-                      nghiệm, V.E.O mong muốn mang lại những cơ hội thiết thực
-                      nhất, phát triển kinh tế bền vững nhất cho bà con nơi đây.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-10">
-                  <h3 className="text-sm font-medium text-gray-900">
-                    Đặc điểm nổi bật
-                  </h3>
-
-                  <div className="mt-4">
-                    <ul
-                      role="list"
-                      className="list-disc space-y-2 pl-4 text-sm"
-                    >
-                      {activities.highlights.map((highlight) => (
-                        <li key={highlight} className="text-gray-400">
-                          <span className="text-gray-600">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-10">
-                  <h2 className="text-sm font-medium text-gray-900">
-                    Lịch trình
-                  </h2>
-                  {activities.timeLine.map((dayTimeline, dayIndex) => (
-                    <div key={dayIndex} className="mt-4 space-y-6">
-                      <h1>{dayTimeline[0]}</h1>{" "}
-                      <ul>
-                        {dayTimeline.slice(1).map((timeLine, index) => (
-                          <li key={index} className="text-sm text-gray-600">
-                            {timeLine}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div className=" max-w-7xl m-auto mt-6 text-sm breadcrumbs">
+        <ul>
+          <li>
+            <a>Trang chủ</a>
+          </li>
+          <li>
+            <a href="/pages/post">Bài viết</a>
+          </li>
+          <li>Khám phá đỉnh Phanxipang</li>
+        </ul>
       </div>
 
-      {/* Slide */}
-      <div className=" mt-0 max-w-7xl m-auto ">
-        <h1 className="mx-auto text-2xl font-bold tracking-tight text-gray-900">
-          Các chương trình du lịch tình nguyện tương tự
+      <section className=" max-w-4xl m-auto">
+        <h1 className="mt-5 font-bold text-xl mb-5">
+          [V.E.O x Vinschool] Hành trình kết nối thế hệ trẻ
         </h1>
 
-        <div className="mx-auto max-w-2xl lg:max-w-7xl">
-          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {activitiess.map((activity) => (
-              <div
-                key={activity.id}
-                className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
-              >
-                <Link href={`/pages/activities/${activity.id}`}>
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
-                    <Image
-                      src={activity.imageSrc}
-                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                      alt=""
-                      width={500}
-                      height={500}
-                    />
-                  </div>
-                  <div className="mt-4 w-full ">
-                    <div>
-                      <h3 className="text-2xl text-gray-700">
-                        <a href={activity.href}>
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0"
-                          />
-                          {activity.title}
-                        </a>
-                      </h3>
-                      <p className="mt-1 text-sm text-gray-500">
-                        <span className="mr-10">Nơi khởi hành:</span>
-                        {activity.address}
-                      </p>
-                      <p className="mt-1 text-sm text-gray-500">
-                        <span className="mr-10">Ngày khởi hành:</span>{" "}
-                        {activity.timeStart}
-                      </p>
-                      <p className="mt-1 text-sm text-gray-500">
-                        <span className="mr-10">Ngày kết thúc:</span>
-                        {activity.time_end}
-                      </p>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    className="text-white w-full mt-5 m-auto bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  >
-                    Đăng kí tham gia
-                  </button>
-                </Link>
-              </div>
-            ))}
-          </div>
+        <i className=" font-semibold text-sm">
+          Vào ngày 28 và 29/10 vừa qua, V.E.O đã cùng Quý phụ huynh và các em
+          học sinh trường Tiểu học Vinschool tổ chức chuyến du lịch tình nguyện
+          tới điểm dự án Bản Cỏi – Phú Thọ với mục tiêu mở rộng kiến thức và
+          cung cấp trải nghiệm thực tế về đời sống, văn hóa, cũng như khuyến
+          khích tinh thần xã hội và tình nguyện cho các em.
+        </i>
+
+        <Image
+          height="450"
+          width="896"
+          src="https://veo.com.vn/wp-content/uploads/2023/11/tap-the-8.jpg"
+          alt=""
+        ></Image>
+
+        <h1 className=" mb-3 font-bold text-2xl mt-5 ">
+          Giao lưu các em nhỏ tại điểm trường Mầm non Bản Cỏi
+        </h1>
+        <p>
+          Trong buổi sáng ngày 28/10, đoàn có dịp được ghé thăm và giao lưu với
+          thầy cô và các em nhỏ tại Trường mầm non Xuân Sơn – Điểm trường Cỏi
+          Lấp. Tại đây, các bạn học sinh trường Vinschool không chỉ có cơ hội
+          được thử sức đứng lớp dạy học mà còn tổ chức các hoạt động vui chơi,
+          sự kiện “Phiên chợ 0 đồng” và tặng quà cho các em nhỏ tại điểm trường
+        </p>
+
+        <div className="flex mt-5">
+          <Image
+            height="450"
+            width="296"
+            src="https://veo.com.vn/wp-content/uploads/2023/11/tap-the-8.jpg"
+            alt=""
+          ></Image>
+          <Image
+            className="ml-2"
+            height="450"
+            width="296"
+            src="https://veo.com.vn/wp-content/uploads/2023/11/tap-the-8.jpg"
+            alt=""
+          ></Image>
+          <Image
+            className="ml-2"
+            height="450"
+            width="296"
+            src="https://veo.com.vn/wp-content/uploads/2023/11/tap-the-8.jpg"
+            alt=""
+          ></Image>
         </div>
-      </div>
+        <p className="mt-5">
+          V.E.O tin rằng với tầm nhìn chung của hai đơn vị, hai bên sẽ tiếp tục
+          mang đến các dự án xã hội có giá trị cho cộng đồng. Hãy cùng đón chờ
+          các hoạt động sắp tới của V.E.O và Vinschool nhé!
+        </p>
+      </section>
+
       <Footer />
     </>
   );
