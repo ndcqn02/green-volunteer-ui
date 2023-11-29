@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from 'next/router';
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { instance } from "../../api/index";
@@ -40,6 +41,7 @@ import { RxDotFilled } from "react-icons/rx";
 
 export default function Hero() {
   const [dataActivity, setDataActivity] = useState([]);
+
 
   useEffect(() => {
     const getData = async () => {
@@ -91,6 +93,10 @@ export default function Hero() {
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
+
+  const handleDetail = () => {
+    
+  }
   return (
     <>
       <div className="max-w-[1400px] h-[580px] w-full m-auto py-8 px-4 relative group">
@@ -125,7 +131,7 @@ export default function Hero() {
             <div className="flex flex-wrap w-full mb-20">
               <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
                 <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
-                  Các hoạt động sắp triển khai
+                  Các hoạt động đang triển khai
                 </h1>
                 <div className="h-1 w-20 bg-indigo-500 rounded"></div>
               </div>
@@ -137,9 +143,10 @@ export default function Hero() {
                 bạn để tạo ra ảnh hưởng tích cực.
               </p>
             </div>
-            <div className="flex flex-wrap -m-4">
+            <a className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' href={`/pages/listActivities`}>Xem tất cả</a>
+            <div className="flex flex-wrap mt-4">
               {dataActivity.map((activity, index) => (
-                <div key={index} className="xl:w-1/4 md:w-1/2 p-4">
+                <div key={index} className="xl:w-1/4 md:w-1/2 p-2 ">
                   <div className="bg-gray-200 p-6 rounded-lg">
                     <Image
                       width="40"
@@ -157,10 +164,10 @@ export default function Hero() {
                     <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
                       {activity.title}
                     </h2>
-                    <p className="leading-relaxed text-base mb-5">
+                    <p className="leading-relaxed text-base mb-5 overflow-hidden line-clamp-3">
                       {activity.body}
                     </p>
-                    <a className=" text-blue-400 cursor-pointer">
+                    <a href={`/pages/activities/${activity.id}`} className=" text-blue-400 cursor-pointer">
                       Xem chi tiết
                     </a>
                   </div>

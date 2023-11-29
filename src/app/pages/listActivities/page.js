@@ -8,6 +8,7 @@ import { RxDotFilled } from "react-icons/rx";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import Header from "@/component/header/header";
 import Footer from "@/component/footer/footer";
+import { format } from 'date-fns';
 
 //   {
 //     name: "Cleaning up the Danube",
@@ -105,7 +106,7 @@ export default function Hero() {
     const getData = async () => {
       try {
         const response = await instance.get(
-          `/posts?page=${"1"}&pageSize=${"10"}`
+          `/activities?page=${"1"}&pageSize=${"10"}`
         );
         console.log(response.data.data.data);
         setDataActivity(response.data.data.data);
@@ -150,48 +151,38 @@ export default function Hero() {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
             {dataActivity.map((activity) => (
-            <div key={activity.id} className="p-4 md:w-1/3">
-            <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-              <img
-                className="lg:h-48 md:h-36 w-full object-cover object-center"
-                src="https://dummyimage.com/720x400"
-                alt="blog"
-              />
-              <div className="p-6">
-                <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                  {activity.title}
-                </h1>
-                <p className="leading-relaxed mb-3">
-                  Photo booth fam kinfolk cold-pressed sriracha leggings
-                  jianbing microdosing tousled waistcoat.
-                </p>
-                <div className="flex items-center flex-wrap ">
-                  <div className=" flex mt-2 bottom-0">
-                    <Image
-                      width="12"
-                      height="12"
-                      className="h-12 w-12 flex-none rounded-full "
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
-                    <div className=" flex items-center ml-3">
-                      <p className="text-sm font-semibold leading-6 text-gray-900">
-                        Đức Cường
-                      </p>
-                      <p className=" text-xs text-gray-500 ml-3">
-                        27/11/2023 -{" "}
-                        <time dateTime="2023-01-23T13:23Z">3h ago</time>
-                      </p>
+              <div key={activity.id} className="p-4 md:w-1/3">
+                <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                  <img
+                    className="lg:h-48 md:h-36 w-full object-cover object-center"
+                    src="https://dummyimage.com/720x400"
+                    alt="blog"
+                  />
+                  <div className="p-6">
+                    <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+                      {activity.title}
+                    </h1>
+                    <div className="flex justify-between">
+                      <p className="   leading-relaxed">Địa điểm: </p>
+                      <p className=" text-right">{activity.address}</p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="   leading-relaxed">Thời gian đi: </p>
+                      <p className=" text-right">{format(new Date(activity.timeStart), 'dd/MM/yyyy')}</p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="   leading-relaxed">Thời gian về: </p>
+                      <p className=" text-right">{format(new Date(activity.time_end), 'dd/MM/yyyy')}</p>
+                    </div>
+                    <div className="flex items-center flex-wrap ">
+                      <button className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Đăng kí
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
             ))}
-
-
-
           </div>
         </div>
       </section>
@@ -213,13 +204,6 @@ export default function Hero() {
         </div>
         <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm text-gray-700">
-              Showing <span className="font-medium">1</span> to{" "}
-              <span className="font-medium">10</span> of{" "}
-              <span className="font-medium">97</span> results
-            </p>
-          </div>
-          <div>
             <nav
               className="isolate inline-flex -space-x-px rounded-md shadow-sm"
               aria-label="Pagination"
@@ -231,7 +215,6 @@ export default function Hero() {
                 <span className="sr-only">Previous</span>
                 <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
               </a>
-              {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
               <a
                 href="#"
                 aria-current="page"
@@ -283,7 +266,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-        <Footer />
+      <Footer />
     </>
   );
 }

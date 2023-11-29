@@ -18,6 +18,7 @@
     "@mui/material": "^5.14.17",
     "@mui/styled-engine-sc": "^6.0.0-alpha.5",
     "axios": "^1.6.1",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
     "next": "^14.0.1",
     "react": "^18.2.0",

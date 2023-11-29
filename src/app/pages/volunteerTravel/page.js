@@ -147,10 +147,6 @@ export default function VolunteerTravel() {
                     <p className="leading-relaxed mb-1">Thời gian về:</p>
                     <p className=" leading-relaxed mb-1">{activity.time_end}</p>
                   </div>
-                  <div className="flex justify-between mb-5">
-                    <p className="leading-relaxed mb-1">Tổng chi phí: </p>
-                    <p className=" leading-relaxed mb-1">7,000,000 đ</p>
-                  </div>
                   <div className="flex items-center flex-wrap ">
                     <Link href={`/pages/activities/${activity.id}`} passHref className="text-indigo-500 cursor-pointer inline-flex items-center md:mb-2 lg:mb-0">
                       Xem chi tiết

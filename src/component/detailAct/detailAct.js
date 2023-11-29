@@ -1,9 +1,13 @@
-
 import { ChartPieIcon } from "@heroicons/react/24/outline";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { instance } from "@/api";
+import { Fragment, useRef } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 const activitiess = [
   {
@@ -45,62 +49,87 @@ const activitiess = [
   },
   // More products...
 ];
+const activities = [
+  {
+    id: 1,
+    title: "Tình nguyện Xanh",
+    body: "",
+    href: "",
+    timeStart: "17-11-2023",
+    time_end: "20-11-2023",
+    address: "Đa Phước - An Giang",
+    images: [
+      {
+        src: "https://pbgdpl.haiphong.gov.vn/upload/phobienphapluat/product/2022/2/tinh-nguyen-998e2df06ff1465d9ce22d7e00b0cce6.jpg?maxwidth=1000",
+        alt: "Two each of gray, white, and black shirts laying flat.",
+      },
+      {
+        src: "https://tuyengiao.vn/Uploads/2018/9/3/25/thanh-nien-tinh-nguyen-he-hanh-trinh-truong-thanh-cua-thanh-nien-1.jpg",
+        alt: "Model wearing plain black basic tee.",
+      },
+      {
+        src: "https://tuyengiao.vn/Uploads/2016/12/25/3tn.jpg",
+        alt: "Model wearing plain gray basic tee.",
+      },
+      {
+        src: "https://tuyengiao.vn/Uploads/2016/12/25/3tn.jpg",
+        alt: "Model wearing plain white basic tee.",
+      },
+    ],
+    highlights: [
+      "Hand cut and sewn Tham quan làng văn hóa Lũng Cẩm, nơi lấy bối cảnh những thước phim nổi tiếng Chuyện củaPao",
+      "Trải nghiệm độc đáo lại ngôi làng cổ tích Lô Lô Chải",
+      "Chinh phục cột cờ Lũng Cú, nơi địa đầu tổ quốc.",
+      "Chinh phục Mã Pì Lèng, nơi được mệnh danh là đệ nhất hùng quan của Việt Nam.",
+    ],
+    timeLine: [
+      [
+        "Ngày 1: Hà Nội – TP Hà Giang – Quản Bạ",
+        "19h30: Tập trung, di chuyển tại 142 Giảng Võ (Cửa hàng Kính mắt Việt Tín), Ba Đình, Hà Nội.",
+        "20h00: Đoàn bắt đầu xuất phát.",
+      ],
+      [
+        "Ngày 2: Hà Nội – TP Hà Giang – Quản Bạ",
+        "03h00: Đoàn đến điểm dừng chân Cán Tỷ, huyện Quản Bạ để nghỉ ngơi, ăn sáng.",
+        "8h00: Khởi hành khám phá Công Văn địa chất Hà Giang trên cung đường và check-in tại những địa điểm nổi tiếng (cổng trời Quản Bạ, núi đôi,…).",
+        "10h30: Dừng chân tại thung lũng Sủng Là, làng văn hóa Lũng Cẩm – nơi quay bộ phim “Chuyện của Pao”.",
+        "12h30: Nghỉ ngơi ăn trưa tại làng Lô Lô Chải, chân cột cờ Lũng Cú.",
+        "14h00: Thực hiện hoạt động tình nguyện buổi chiều.",
+        "18h00: Nghỉ ngơi ăn tối.",
+        "20h00: Chương trình Gala Night giao lưu văn nghệ với bà con Lô Lô Chải.",
+        "22h30: Nghỉ ngơi.",
+      ],
+    ],
+  },
+];
 export default function DetailAct() {
-  // const [detail, setDetail] = useState([])
+  const [open, setOpen] = useState(false);
+  const cancelButtonRef = useRef(null);
+  const [dataActivity, setDataActivity] = useState({});
+  const [dataActivities, setActivities] = useState([]);
 
-  const activities = [
-    {
-      id: 1,
-      title: "Tình nguyện Xanh",
-      body: "",
-      href: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      images: [
-        {
-          src: "https://pbgdpl.haiphong.gov.vn/upload/phobienphapluat/product/2022/2/tinh-nguyen-998e2df06ff1465d9ce22d7e00b0cce6.jpg?maxwidth=1000",
-          alt: "Two each of gray, white, and black shirts laying flat.",
-        },
-        {
-          src: "https://tuyengiao.vn/Uploads/2018/9/3/25/thanh-nien-tinh-nguyen-he-hanh-trinh-truong-thanh-cua-thanh-nien-1.jpg",
-          alt: "Model wearing plain black basic tee.",
-        },
-        {
-          src: "https://tuyengiao.vn/Uploads/2016/12/25/3tn.jpg",
-          alt: "Model wearing plain gray basic tee.",
-        },
-        {
-          src: "https://tuyengiao.vn/Uploads/2016/12/25/3tn.jpg",
-          alt: "Model wearing plain white basic tee.",
-        },
-      ],
-      highlights: [
-        "Hand cut and sewn Tham quan làng văn hóa Lũng Cẩm, nơi lấy bối cảnh những thước phim nổi tiếng Chuyện củaPao",
-        "Trải nghiệm độc đáo lại ngôi làng cổ tích Lô Lô Chải",
-        "Chinh phục cột cờ Lũng Cú, nơi địa đầu tổ quốc.",
-        "Chinh phục Mã Pì Lèng, nơi được mệnh danh là đệ nhất hùng quan của Việt Nam.",
-      ],
-      timeLine: [
-        [
-          "Ngày 1: Hà Nội – TP Hà Giang – Quản Bạ",
-          "19h30: Tập trung, di chuyển tại 142 Giảng Võ (Cửa hàng Kính mắt Việt Tín), Ba Đình, Hà Nội.",
-          "20h00: Đoàn bắt đầu xuất phát.",
-        ],
-        [
-          "Ngày 2: Hà Nội – TP Hà Giang – Quản Bạ",
-          "03h00: Đoàn đến điểm dừng chân Cán Tỷ, huyện Quản Bạ để nghỉ ngơi, ăn sáng.",
-          "8h00: Khởi hành khám phá Công Văn địa chất Hà Giang trên cung đường và check-in tại những địa điểm nổi tiếng (cổng trời Quản Bạ, núi đôi,…).",
-          "10h30: Dừng chân tại thung lũng Sủng Là, làng văn hóa Lũng Cẩm – nơi quay bộ phim “Chuyện của Pao”.",
-          "12h30: Nghỉ ngơi ăn trưa tại làng Lô Lô Chải, chân cột cờ Lũng Cú.",
-          "14h00: Thực hiện hoạt động tình nguyện buổi chiều.",
-          "18h00: Nghỉ ngơi ăn tối.",
-          "20h00: Chương trình Gala Night giao lưu văn nghệ với bà con Lô Lô Chải.",
-          "22h30: Nghỉ ngơi.",
-        ],
-      ],
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      const currentPath = window.location.pathname;
+      const id = currentPath.split("/").pop();
+      console.log("ID:", id);
+
+      try {
+        let response1 = await instance.get(
+          `/activities?page=${"1"}&pageSize=${"4"}`
+        );
+        let response = await instance.get(`/activities/getId/${id}`);
+        console.log("SADS", response1.data.data.data);
+        setActivities(response1.data.data.data);
+        setDataActivity(response.data.data);
+        console.log(">>>>>>>>>>>", response1.data.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <Header />
@@ -183,45 +212,220 @@ export default function DetailAct() {
               </div>
             </div>
 
-            {/* Product info */}
             <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
               <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-                <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                  {activities.title}
-                </h1>
+                {dataActivity ? (
+                  <div>
+                    {/* Sử dụng dữ liệu khi đã sẵn sàng */}
+                    <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                      {dataActivity.title}
+                    </h1>
+                    {/* Các thành phần JSX khác */}
+                  </div>
+                ) : (
+                  // Hiển thị một thông báo hoặc loader khi đang tải dữ liệu
+                  <p>Loading...</p>
+                )}
               </div>
 
-              {/* Options */}
               <div className="mt-6 lg:row-span-3 lg:mt-0">
                 <h2 className="text-2xl">Liên hệ chúng tôi</h2>
                 <div>
                   <p className="mt-6">
                     <span>Thời gian khởi hành: </span>
-                    {activities.timeStart}
+                    {dataActivity.timeStart}
                   </p>
                   <p className="">
                     <span>Thời gian kết thúc: </span>
-                    {activities.timeStart}
+                    {dataActivity.timeStart}
                   </p>
                   <p className="">
                     <span>Điểm đến: </span>
-                    {activities.address}
+                    {dataActivity.address}
                   </p>
                 </div>
-                <form className="mt-10">
+                <div className="mt-10">
                   <button
                     type="submit"
+                    onClick={() => {
+                      setOpen(true);
+                    }}
                     className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     Đăng kí tham gia
                   </button>
+                  <div
+                    id="default-modal"
+                    tabindex="-1"
+                    aria-hidden="true"
+                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+                  >
+                    <div class="relative p-4 w-full max-w-2xl max-h-full">
+                      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            Terms of Service
+                          </h3>
+                          <button
+                            type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-hide="default-modal"
+                          >
+                            <svg
+                              class="w-3 h-3"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 14 14"
+                            >
+                              <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                              />
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                          </button>
+                        </div>
+                        <div class="p-4 md:p-5 space-y-4">
+                          <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                            With less than a month to go before the European
+                            Union enacts new consumer privacy laws for its
+                            citizens, companies around the world are updating
+                            their terms of service agreements to comply.
+                          </p>
+                          <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                            The European Union’s General Data Protection
+                            Regulation (G.D.P.R.) goes into effect on May 25 and
+                            is meant to ensure a common set of data rights in
+                            the European Union. It requires organizations to
+                            notify users as soon as possible of high-risk data
+                            breaches that could personally affect them.
+                          </p>
+                        </div>
+                        <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                          <button
+                            data-modal-hide="default-modal"
+                            type="button"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                          >
+                            I accept
+                          </button>
+                          <button
+                            data-modal-hide="default-modal"
+                            type="button"
+                            class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                          >
+                            Decline
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <button
                     type="submit"
                     className="mt-2 flex w-full items-center justify-center rounded-md border border-transparent bg-red-400 px-8 py-3 text-base font-medium text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     Ủng hộ
                   </button>
-                </form>
+                </div>
+
+                <Transition.Root show={open} as={Fragment}>
+                  <Dialog
+                    as="div"
+                    className="relative z-10"
+                    initialFocus={cancelButtonRef}
+                    onClose={setOpen}
+                  >
+                    <Transition.Child
+                      as={Fragment}
+                      enter="ease-out duration-300"
+                      enterFrom="opacity-0"
+                      enterTo="opacity-100"
+                      leave="ease-in duration-200"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+                    </Transition.Child>
+
+                    <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                      <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <Transition.Child
+                          as={Fragment}
+                          enter="ease-out duration-300"
+                          enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                          enterTo="opacity-100 translate-y-0 sm:scale-100"
+                          leave="ease-in duration-200"
+                          leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                          leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        >
+                          <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                            <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                              <div className="sm:flex sm:items-start">
+
+                                <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                  <Dialog.Title
+                                    as="h3"
+                                    className=" text-xl font-semibold leading-6 text-gray-900"
+                                  >
+                                    Xác nhận đăng kí
+                                  </Dialog.Title>
+                                  <div className="mt-2">
+                                    <p className="text-sm text-gray-800">
+                                    Tên hoạt động: 
+                                    </p>
+                                    <p className="text-sm text-gray-500">
+                                    {dataActivity.title}
+                                    </p>
+                                    <p className="text-sm text-gray-800">
+                                    Thời gian đi: 
+                                    </p>
+                                    <p className="text-sm text-gray-500">
+                                    {dataActivity.timeStart}
+                                    </p>
+                                    <p className="text-sm text-gray-800">
+                                    Thời gian về: 
+                                    </p>
+                                    <p className="text-sm text-gray-500">
+                                    {dataActivity.time_end}
+                                    </p>
+                                    <p className="text-sm text-gray-800">
+                                    Địa điểm đến: 
+                                    </p>
+                                    <p className="text-sm text-gray-500">
+                                    {dataActivity.address}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                              <button
+                                type="button"
+                                className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
+                                onClick={() => setOpen(false)}
+                              >
+                                Đăng kí
+                              </button>
+                              <button
+                                type="button"
+                                className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                                onClick={() => setOpen(false)}
+                                ref={cancelButtonRef}
+                              >
+                                Huỷ
+                              </button>
+                            </div>
+                          </Dialog.Panel>
+                        </Transition.Child>
+                      </div>
+                    </div>
+                  </Dialog>
+                </Transition.Root>
               </div>
 
               <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
@@ -231,55 +435,9 @@ export default function DetailAct() {
 
                   <div className="space-y-6">
                     <p className="text-base text-gray-900">
-                      Mục tiêu dự án Dự án nhằm duy trì và bảo tồn giá trị văn
-                      hóa của người dân tộc Lô Lô Chải thông qua các hoạt động
-                      hỗ trợ, tu sửa và phát triển mô hình du lịch Homestay “
-                      Nhà Trình Tường” – một nét đẹp trong giá trị văn hóa của
-                      người dân nơi cực bắc Tổ Quốc. Thông qua các hoạt động hỗ
-                      trợ thiết thực như đào tạo kỹ năng việc làm, dạy học phi
-                      chính quy, quảng bá, truyền thông về hình ảnh du lịch cộng
-                      đồng tại địa phương, tổ chức các chương trình du lịch trải
-                      nghiệm, V.E.O mong muốn mang lại những cơ hội thiết thực
-                      nhất, phát triển kinh tế bền vững nhất cho bà con nơi đây.
+                      {dataActivity.body}
                     </p>
                   </div>
-                </div>
-
-                <div className="mt-10">
-                  <h3 className="text-sm font-medium text-gray-900">
-                    Đặc điểm nổi bật
-                  </h3>
-
-                  <div className="mt-4">
-                    <ul
-                      role="list"
-                      className="list-disc space-y-2 pl-4 text-sm"
-                    >
-                      {activities.highlights.map((highlight) => (
-                        <li key={highlight} className="text-gray-400">
-                          <span className="text-gray-600">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-10">
-                  <h2 className="text-sm font-medium text-gray-900">
-                    Lịch trình
-                  </h2>
-                  {activities.timeLine.map((dayTimeline, dayIndex) => (
-                    <div key={dayIndex} className="mt-4 space-y-6">
-                      <h1>{dayTimeline[0]}</h1>{" "}
-                      <ul>
-                        {dayTimeline.slice(1).map((timeLine, index) => (
-                          <li key={index} className="text-sm text-gray-600">
-                            {timeLine}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>
@@ -295,12 +453,12 @@ export default function DetailAct() {
 
         <div className="mx-auto max-w-2xl lg:max-w-7xl">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {activitiess.map((activity) => (
+            {dataActivities.map((activity) => (
               <div
                 key={activity.id}
                 className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
-                >
-                <Link href={`/pages/activities/${activity.id || ''}`}>
+              >
+                <Link href={`/pages/activities/${activity.id || ""}`}>
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                     <Image
                       src={activity.imageSrc}
