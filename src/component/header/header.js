@@ -40,9 +40,10 @@ const news = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
-  const token = localStorage.getItem("authToken");
-
-  console.log(">>>>>>>>>>>>>>>", token);
+  let token;
+  if (typeof window !== "undefined") {
+    token = localStorage?.getItem("authToken");
+  }
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
@@ -167,7 +168,8 @@ export default function Header() {
             <Menu as="div" className="relative inline-block text-left">
               <div>
                 <Menu.Button className=" rounded-full inline-flex w-full justify-center gap-x-1.5 bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                <UserIcon className="h-6 w-6" /> {/* Replace text with user icon */}
+                  <UserIcon className="h-6 w-6" />{" "}
+                  {/* Replace text with user icon */}
                 </Menu.Button>
               </div>
 
