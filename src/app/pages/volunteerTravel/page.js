@@ -28,6 +28,34 @@ export default function VolunteerTravel() {
     getData();
   }, []);
 
+  const handelDetail = async (id) => {
+    try {
+      let response = await instance.get(`/activities/getId/${id}`);
+
+      // Check if the response status is 401 (Unauthorized)
+      if (response.status === 200) {
+        window.location.href = `/pages/activities/${id}`;
+      } else {
+        // Handle the response data as needed
+        console.log(response.data);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        const userConfirmed = window.confirm(
+          "Bạn cần đăng nhập để xem chi tiết. Chuyển đến trang đăng nhập?"
+        );
+
+        if (userConfirmed) {
+          window.location.href = "/pages/login";
+        } else {
+          return
+        }
+      } else {
+        // Handle other errors if needed
+      }
+    }
+  };
+
   return (
     <>
       <Header />
@@ -148,7 +176,7 @@ export default function VolunteerTravel() {
                     <p className=" leading-relaxed mb-1">{activity.time_end}</p>
                   </div>
                   <div className="flex items-center flex-wrap ">
-                    <Link href={`/pages/activities/${activity.id}`} passHref className="text-indigo-500 cursor-pointer inline-flex items-center md:mb-2 lg:mb-0">
+                    <button onClick={() => handelDetail(activity.id)} passHref className="text-indigo-500 cursor-pointer inline-flex items-center md:mb-2 lg:mb-0">
                       Xem chi tiết
                       <svg
                         className="w-4 h-4 ml-2"
@@ -162,7 +190,7 @@ export default function VolunteerTravel() {
                         <path d="M5 12h14"></path>
                         <path d="M12 5l7 7-7 7"></path>
                       </svg>
-                    </Link>
+                    </button>
                     <span className="text-gray-400 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1">
                       <svg
                         className="w-4 h-4 mr-1"

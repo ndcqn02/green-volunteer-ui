@@ -7,106 +7,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { instance } from "@/api";
-
-const posts = [
-  {
-    id: 1,
-    title: "Chia sẻ hoàn cảnh khó khăn cùng chúng tôi",
-    href: "#",
-    description:
-      "Vào ngày 28 và 29/10 vừa qua, V.E.O đã cùng Quý phụ huynh và các em học sinh trường Tiểu học Vinschool tổ chức chuyến…",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    category: { title: "Marketing", href: "#" },
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    id: 2,
-    title: "Chia sẻ hoàn cảnh khó khăn cùng chúng tôi",
-    href: "#",
-    description:
-      "Vào ngày 28 và 29/10 vừa qua, V.E.O đã cùng Quý phụ huynh và các em học sinh trường Tiểu học Vinschool tổ chức chuyến…",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    category: { title: "Marketing", href: "#" },
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    id: 3,
-    title: "Chia sẻ hoàn cảnh khó khăn cùng chúng tôi",
-    href: "#",
-    description:
-      "Vào ngày 28 và 29/10 vừa qua, V.E.O đã cùng Quý phụ huynh và các em học sinh trường Tiểu học Vinschool tổ chức chuyến…",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    category: { title: "Marketing", href: "#" },
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    id: 4,
-    title: "Chia sẻ hoàn cảnh khó khăn cùng chúng tôi",
-    href: "#",
-    description:
-      "Vào ngày 28 và 29/10 vừa qua, V.E.O đã cùng Quý phụ huynh và các em học sinh trường Tiểu học Vinschool tổ chức chuyến…",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    category: { title: "Marketing", href: "#" },
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    id: 5,
-    title: "Chia sẻ hoàn cảnh khó khăn cùng chúng tôi",
-    href: "#",
-    description:
-      "Vào ngày 28 và 29/10 vừa qua, V.E.O đã cùng Quý phụ huynh và các em học sinh trường Tiểu học Vinschool tổ chức chuyến…",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    category: { title: "Marketing", href: "#" },
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    id: 6,
-    title: "Chia sẻ hoàn cảnh khó khăn cùng chúng tôi",
-    href: "#",
-    description:
-      "Vào ngày 28 và 29/10 vừa qua, V.E.O đã cùng Quý phụ huynh và các em học sinh trường Tiểu học Vinschool tổ chức chuyến…",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    category: { title: "Marketing", href: "#" },
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    id: 7,
-    title: "Chia sẻ hoàn cảnh khó khăn cùng chúng tôi",
-    href: "#",
-    description:
-      "Vào ngày 28 và 29/10 vừa qua, V.E.O đã cùng Quý phụ huynh và các em học sinh trường Tiểu học Vinschool tổ chức chuyến…",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    category: { title: "Marketing", href: "#" },
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    id: 8,
-    title: "Chia sẻ hoàn cảnh khó khăn cùng chúng tôi",
-    href: "#",
-    description:
-      "Vào ngày 28 và 29/10 vừa qua, V.E.O đã cùng Quý phụ huynh và các em học sinh trường Tiểu học Vinschool tổ chức chuyến…",
-    date: "Mar 16, 2020",
-    datetime: "2020-03-16",
-    category: { title: "Marketing", href: "#" },
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  // More posts...
-];
+import Link from "next/link";
 
 const people = [
   {
@@ -162,7 +63,7 @@ export default function Post() {
   const [event, setEvent] = useState([]);
   function truncateString(str, maxLength) {
     if (str.length > maxLength) {
-      return str.substring(0, maxLength) + '...';
+      return str.substring(0, maxLength) + "...";
     }
     return str;
   }
@@ -176,7 +77,7 @@ export default function Post() {
           `/posts?page=${"1"}&pageSize=${"50"}&sort=timestamp:desc`
         );
         setDataActivity(response.data.data.data);
-        setEvent(response1.data.data.data)
+        setEvent(response1.data.data.data);
         let data = response.data.data.data;
         console.log(">>>>>>>>>>>", data);
 
@@ -193,6 +94,34 @@ export default function Post() {
     };
     getData();
   }, []);
+
+  const handelDetail = async (id) => {
+    try {
+      let response = await instance.get(`/posts/getId/${id}`);
+
+      // Check if the response status is 401 (Unauthorized)
+      if (response.status === 200) {
+        window.location.href = `/pages/detailPost/${id}`
+      } else {
+        // Handle the response data as needed
+        console.log(response.data);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        const userConfirmed = window.confirm(
+          "Bạn cần đăng nhập để xem chi tiết. Chuyển đến trang đăng nhập?"
+        );
+
+        if (userConfirmed) {
+          window.location.href = "/pages/login";
+        } else {
+          return;
+        }
+      } else {
+        // Handle other errors if needed
+      }
+    }
+  };
   return (
     <>
       <Header />
@@ -243,16 +172,20 @@ export default function Post() {
                     className="object-cover w-full h-full"
                   ></Image>
                 </div>
-                <h1 className="  text-xl mt-3 font-bold">
-                  {dataNewest ? dataNewest.title : ""}
-                </h1>
+                <a
+                  onClick={() => handelDetail(dataNewest.id)}
+                >
+                  <h1 className="text-xl mt-3 font-bold">
+                    {dataNewest ? dataNewest.title : ""}
+                  </h1>
+                </a>
                 <p className="overflow-hidden mt-3 text-sm">
                   {dataNewest ? truncateString(dataNewest.body, 200) : ""}
                 </p>
                 <div className=" flex mt-5 absolute bottom-0">
                   <Image
-                    width="12"
-                    height="12"
+                    width="500"
+                    height="500"
                     className="h-12 w-12 flex-none rounded-full bg-gray-50"
                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                     alt=""
@@ -280,16 +213,18 @@ export default function Post() {
                       className="object-cover w-full h-full"
                     ></Image>
                   </div>
-                  <h1 className=" text-xl mt-3 font-bold">
-                    {dataNewest1 ? dataNewest1.title : ""}
-                  </h1>
+                  <a onClick={() => handelDetail(dataNewest1.id)}>
+                    <h1 className="text-xl mt-3 font-bold cursor-pointer">
+                      {dataNewest1 ? dataNewest1.title : ""}
+                    </h1>
+                  </a>
                   <p className=" mt-3 text-sm">
                     {dataNewest1 ? truncateString(dataNewest1.body, 200) : ""}
                   </p>
                   <div className=" flex mt-5 absolute bottom-0">
                     <Image
-                      width="12"
-                      height="12"
+                      width="500"
+                      height="500"
                       className="h-12 w-12 flex-none rounded-full bg-gray-50"
                       src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                       alt=""
@@ -363,11 +298,13 @@ export default function Post() {
                   className="object-cover w-full h-full"
                 ></Image>
               </div>
-              <h1 className=" text-2xl mt-3 font-bold">
-              {dataNewest1 ? dataNewest1.title : ""}
-              </h1>
+              <a onClick={() => handelDetail(dataNewest1.id)}>
+                <h1 className="text-xl mt-3 font-bold cursor-pointer">
+                  {dataNewest1 ? dataNewest1.title : ""}
+                </h1>
+              </a>
               <p className=" mt-3 text-sm text-gray-500">
-              {dataNewest1 ? truncateString(dataNewest1.body, 200) : ""}
+                {dataNewest1 ? truncateString(dataNewest1.body, 200) : ""}
               </p>
               <div className=" flex mt-2 absolute bottom-0">
                 <Image
@@ -392,49 +329,48 @@ export default function Post() {
 
           <div className=" grid grid-cols-2 gap-4 col-span-2">
             {event.map((event, index) => (
-            <div key={index} className=" relative">
-            <div className="col-span-2 h-[150px]">
-              <div className="flex flex-col ">
-                <div className=" w-full rounded-xl h-[150px] overflow-hidden">
-                  <Image
-                    src="https://veo.com.vn/wp-content/uploads/2023/11/tap-the-8.jpg"
-                    alt=""
-                    width="576"
-                    height="370"
-                    className="object-cover w-full h-full"
-                  ></Image>
-                </div>
-                <h1 className=" text-lg mt-3 font-bold">
-                  {event.title}
-                </h1>
-                <div className=" flex mt-2 absolute bottom-0 mb-2">
-                  <Image
-                    width="10"
-                    height="10"
-                    className="h-10 w-10 flex-none rounded-full "
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
-                  <div className=" flex items-center ml-3">
-                    <p className="text-sm font-semibold leading-6 text-gray-900">
-                      Đức Cường
-                    </p>
-                    <p className=" text-xs text-gray-500 ml-3">
-                      27/11/2023 -{" "}
-                      <time dateTime="2023-01-23T13:23Z">3h ago</time>
-                    </p>
+              <div key={index} className=" relative">
+                <div className="col-span-2 h-[150px]">
+                  <div className="flex flex-col ">
+                    <div className=" w-full rounded-xl h-[150px] overflow-hidden">
+                      <Image
+                        src="https://veo.com.vn/wp-content/uploads/2023/11/tap-the-8.jpg"
+                        alt=""
+                        width="576"
+                        height="370"
+                        className="object-cover w-full h-full"
+                      ></Image>
+                    </div>
+                    <a onClick={() => handelDetail(event.id)}>
+                      <h1 className="text-xl mt-3 font-bold cursor-pointer">
+                        {event ? event.title : ""}
+                      </h1>
+                    </a>
+                    <div className=" flex mt-2 absolute bottom-0 mb-2">
+                      <Image
+                        width="10"
+                        height="10"
+                        className="h-10 w-10 flex-none rounded-full "
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                      <div className=" flex items-center ml-3">
+                        <p className="text-sm font-semibold leading-6 text-gray-900">
+                          Đức Cường
+                        </p>
+                        <p className=" text-xs text-gray-500 ml-3">
+                          27/11/2023 -{" "}
+                          <time dateTime="2023-01-23T13:23Z">3h ago</time>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-             ))} 
-
-
+            ))}
           </div>
         </div>
       </div>
-
 
       <Footer />
     </>

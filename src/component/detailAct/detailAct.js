@@ -9,46 +9,7 @@ import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
-const activitiess = [
-  {
-    id: 1,
-    title: "Tình nguyện Xanh",
-    body: "",
-    href: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 2,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 3,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 4,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  // More products...
-];
+
 const activities = [
   {
     id: 1,

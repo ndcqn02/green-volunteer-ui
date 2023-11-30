@@ -8,7 +8,7 @@ import { RxDotFilled } from "react-icons/rx";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import Header from "@/component/header/header";
 import Footer from "@/component/footer/footer";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
 //   {
 //     name: "Cleaning up the Danube",
@@ -40,29 +40,7 @@ import { format } from 'date-fns';
 //     href: "#",
 //   },
 // ];
-const items = [
-  {
-    id: 1,
-    title: "Back End Developer",
-    department: "Engineering",
-    type: "Full-time",
-    location: "Remote",
-  },
-  {
-    id: 2,
-    title: "Front End Developer",
-    department: "Engineering",
-    type: "Full-time",
-    location: "Remote",
-  },
-  {
-    id: 3,
-    title: "User Interface Designer",
-    department: "Design",
-    type: "Full-time",
-    location: "Remote",
-  },
-];
+
 export default function Hero() {
   const [dataActivity, setDataActivity] = useState([]);
   const slides = [
@@ -117,6 +95,36 @@ export default function Hero() {
     getData();
   }, []);
 
+  const handelDetail = async (id) => {
+    try {
+      let response = await instance.get(`/activities/getId/${id}`);
+
+      // Check if the response status is 401 (Unauthorized)
+      if (response.status === 401) {
+        alert("You need to log in to access this content.");
+        // You can redirect the user to the login page or take any other appropriate action.
+        // Example: window.location.href = "/login";
+      } else {
+        // Handle the response data as needed
+        console.log(response.data);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        const userConfirmed = window.confirm(
+          "Bạn cần đăng nhập để xem chi tiết. Chuyển đến trang đăng nhập?"
+        );
+
+        if (userConfirmed) {
+          window.location.href = "/pages/login";
+        } else {
+          return
+        }
+      } else {
+        // Handle other errors if needed
+      }
+    }
+  };
+
   return (
     <>
       <Header />
@@ -168,14 +176,21 @@ export default function Hero() {
                     </div>
                     <div className="flex justify-between">
                       <p className="   leading-relaxed">Thời gian đi: </p>
-                      <p className=" text-right">{format(new Date(activity.timeStart), 'dd/MM/yyyy')}</p>
+                      <p className=" text-right">
+                        {format(new Date(activity.timeStart), "dd/MM/yyyy")}
+                      </p>
                     </div>
                     <div className="flex justify-between">
                       <p className="   leading-relaxed">Thời gian về: </p>
-                      <p className=" text-right">{format(new Date(activity.time_end), 'dd/MM/yyyy')}</p>
+                      <p className=" text-right">
+                        {format(new Date(activity.time_end), "dd/MM/yyyy")}
+                      </p>
                     </div>
                     <div className="flex items-center flex-wrap ">
-                      <button className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      <button
+                        onClick={() => handelDetail(activity.id)}
+                        className=" text-center bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      >
                         Đăng kí
                       </button>
                     </div>

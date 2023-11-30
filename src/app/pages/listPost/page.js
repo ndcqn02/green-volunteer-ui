@@ -8,59 +8,8 @@ import { RxDotFilled } from "react-icons/rx";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import Header from "@/component/header/header";
 import Footer from "@/component/footer/footer";
+import Link from "next/link";
 
-//     name: "Cleaning up the Danube",
-//     description:
-//       "Out team is actively working to clean up the Danube River from pollution in order to restore its natural beauty",
-//     imageSrc:
-//       "https://images.unsplash.com/photo-1545641203-7d072a14e3b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJpdmVyfGVufDB8fDB8fHww",
-//     imageAlt:
-//       "Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.",
-//     href: "#",
-//   },
-//   {
-//     name: "Forest Garden",
-//     description:
-//       "Since prehistoric times hunter-gatherers might have influenced forests, for instance in Europe by Mesolithic people bringing favored plants like hazel with them.",
-//     imageSrc:
-//       "https://images.unsplash.com/photo-1590371509519-8594d8ff37a6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9yZXN0JTIwZ2FyZGVufGVufDB8fDB8fHww",
-//     imageAlt:
-//       "Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.",
-//     href: "#",
-//   },
-//   {
-//     name: "Become to valley",
-//     description:
-//       "Silicon Valley is a region in Northern California that is a global center for high technology and innovation",
-//     imageSrc:
-//       "https://images.unsplash.com/photo-1513029470192-107801f1fe49?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
-//     href: "#",
-//   },
-// ];
-const items = [
-  {
-    id: 1,
-    title: "Back End Developer",
-    department: "Engineering",
-    type: "Full-time",
-    location: "Remote",
-  },
-  {
-    id: 2,
-    title: "Front End Developer",
-    department: "Engineering",
-    type: "Full-time",
-    location: "Remote",
-  },
-  {
-    id: 3,
-    title: "User Interface Designer",
-    department: "Design",
-    type: "Full-time",
-    location: "Remote",
-  },
-];
 export default function Hero() {
   const [dataActivity, setDataActivity] = useState([]);
   const slides = [
@@ -115,6 +64,37 @@ export default function Hero() {
     getData();
   }, []);
 
+
+  const handel = async (id) => {
+    try {
+      let response = await instance.get(`/activities/getId/${id}`);
+
+      // Check if the response status is 401 (Unauthorized)
+      if (response.status === 401) {
+        alert("You need to log in to access this content.");
+        // You can redirect the user to the login page or take any other appropriate action.
+        // Example: window.location.href = "/login";
+      } else {
+        // Handle the response data as needed
+        console.log(response.data);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        const userConfirmed = window.confirm(
+          "Bạn cần đăng nhập để xem chi tiết. Chuyển đến trang đăng nhập?"
+        );
+
+        if (userConfirmed) {
+          window.location.href = "/pages/login";
+        } else {
+          return
+        }
+      } else {
+        // Handle other errors if needed
+      }
+    }
+  };
+
   return (
     <>
       <Header />
@@ -149,44 +129,45 @@ export default function Hero() {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
             {dataActivity.map((activity) => (
-            <div key={activity.id} className="p-4 md:w-1/3">
-            <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-              <img
-                className="lg:h-48 md:h-36 w-full object-cover object-center"
-                src="https://dummyimage.com/720x400"
-                alt="blog"
-              />
-              <div className="p-6">
-                <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                  {activity.title}
-                </h1>
-                <p className="leading-relaxed mb-3">
-                  Photo booth fam kinfolk cold-pressed sriracha leggings
-                  jianbing microdosing tousled waistcoat.
-                </p>
-                <div className="flex items-center flex-wrap ">
-                  <div className=" flex mt-2 bottom-0">
-                    <Image
-                      width="12"
-                      height="12"
-                      className="h-12 w-12 flex-none rounded-full "
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
-                    <div className=" flex items-center ml-3">
-                      <p className="text-sm font-semibold leading-6 text-gray-900">
-                        Đức Cường
-                      </p>
-                      <p className=" text-xs text-gray-500 ml-3">
-                        27/11/2023 -{" "}
-                        <time dateTime="2023-01-23T13:23Z">3h ago</time>
-                      </p>
+              <div key={activity.id} className="p-4 md:w-1/3">
+                <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                  <img
+                    className="lg:h-48 md:h-36 w-full object-cover object-center"
+                    src="https://dummyimage.com/720x400"
+                    alt="blog"
+                  />
+                  <div className="p-6">
+                    <button
+                      onClick={() => handel(activity.id)}
+                    >
+                      <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+                        {activity ? activity.title : ""}
+                      </h1>
+                    </button>
+                    <p className="leading-relaxed mb-3">{activity.body}</p>
+                    <div className="flex items-center flex-wrap ">
+                      <div className=" flex mt-2 bottom-0">
+                        <Image
+                          width="12"
+                          height="12"
+                          className="h-12 w-12 flex-none rounded-full "
+                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          alt=""
+                        />
+                        <div className=" flex items-center ml-3">
+                          <p className="text-sm font-semibold leading-6 text-gray-900">
+                            Đức Cường
+                          </p>
+                          <p className=" text-xs text-gray-500 ml-3">
+                            27/11/2023 -{" "}
+                            <time dateTime="2023-01-23T13:23Z">3h ago</time>
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
             ))}
           </div>
         </div>
@@ -227,7 +208,7 @@ export default function Hero() {
                 <span className="sr-only">Previous</span>
                 <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
               </a>
-              
+
               <a
                 href="#"
                 aria-current="page"
@@ -279,7 +260,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-        <Footer />
+      <Footer />
     </>
   );
 }
