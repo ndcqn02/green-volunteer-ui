@@ -1,6 +1,5 @@
 import { ChartPieIcon } from "@heroicons/react/24/outline";
 import Header from "../header/header";
-<<<<<<< HEAD
 import Footer from "../footer/footer";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,16 +11,6 @@ import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 
 const activities = [
-=======
-import { useState, useEffect } from "react";
-import { StarIcon } from "@heroicons/react/20/solid";
-import { RadioGroup } from "@headlessui/react";
-import Footer from "../footer/footer";
-import Link from "next/link";
-import Image from "next/image";
-import axios from 'axios'
-const activitiess = [
->>>>>>> dev
   {
     id: 1,
     title: "Tình nguyện Xanh",
@@ -30,7 +19,6 @@ const activitiess = [
     timeStart: "17-11-2023",
     time_end: "20-11-2023",
     address: "Đa Phước - An Giang",
-<<<<<<< HEAD
     images: [
       {
         src: "https://pbgdpl.haiphong.gov.vn/upload/phobienphapluat/product/2022/2/tinh-nguyen-998e2df06ff1465d9ce22d7e00b0cce6.jpg?maxwidth=1000",
@@ -103,108 +91,6 @@ export default function DetailAct() {
     fetchData();
   }, []);
 
-=======
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 2,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 3,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  {
-    id: 4,
-    title: "Tình nguyện Xanh",
-    body: "",
-    timeStart: "17-11-2023",
-    time_end: "20-11-2023",
-    address: "Đa Phước - An Giang",
-    imageSrc: "https://lawnet.vn/uploads/image/2023/05/04/042507347.jpg",
-  },
-  // More products...
-];
-export default function DetailAct() {
-  const activities = [
-    {
-      id: 1,
-      title: "Tình nguyện Xanh",
-      body: "",
-      href: "",
-      timeStart: "17-11-2023",
-      time_end: "20-11-2023",
-      address: "Đa Phước - An Giang",
-      images: [
-        {
-          src: "https://pbgdpl.haiphong.gov.vn/upload/phobienphapluat/product/2022/2/tinh-nguyen-998e2df06ff1465d9ce22d7e00b0cce6.jpg?maxwidth=1000",
-          alt: "Two each of gray, white, and black shirts laying flat.",
-        },
-        {
-          src: "https://tuyengiao.vn/Uploads/2018/9/3/25/thanh-nien-tinh-nguyen-he-hanh-trinh-truong-thanh-cua-thanh-nien-1.jpg",
-          alt: "Model wearing plain black basic tee.",
-        },
-        {
-          src: "https://tuyengiao.vn/Uploads/2016/12/25/3tn.jpg",
-          alt: "Model wearing plain gray basic tee.",
-        },
-        {
-          src: "https://cdnimg.vietnamplus.vn/t1200/Uploaded/ngtmbh/2021_09_05/ttxvn_thanh_nien_hn_phong_chong_dich.jpg",
-          alt: "Model wearing plain white basic tee.",
-        },
-      ],
-      highlights: [
-        "Hand cut and sewn Tham quan làng văn hóa Lũng Cẩm, nơi lấy bối cảnh những thước phim nổi tiếng Chuyện củaPao",
-        "Trải nghiệm độc đáo lại ngôi làng cổ tích Lô Lô Chải",
-        "Chinh phục cột cờ Lũng Cú, nơi địa đầu tổ quốc.",
-        "Chinh phục Mã Pì Lèng, nơi được mệnh danh là đệ nhất hùng quan của Việt Nam.",
-        "Chinh phục Mã Pì Lèng, nơi được mệnh danh là đệ nhất hùng quan của Việt Nam.",
-      ],
-      timeLine: [
-        [
-          "Ngày 1: Hà Nội – TP Hà Giang – Quản Bạ",
-          "19h30: Tập trung, di chuyển tại 142 Giảng Võ (Cửa hàng Kính mắt Việt Tín), Ba Đình, Hà Nội.",
-          "20h00: Đoàn bắt đầu xuất phát.",
-        ],
-        [
-          "Ngày 2: Hà Nội – TP Hà Giang – Quản Bạ",
-          "03h00: Đoàn đến điểm dừng chân Cán Tỷ, huyện Quản Bạ để nghỉ ngơi, ăn sáng.",
-          "8h00: Khởi hành khám phá Công Văn địa chất Hà Giang trên cung đường và check-in tại những địa điểm nổi tiếng (cổng trời Quản Bạ, núi đôi,…).",
-          "10h30: Dừng chân tại thung lũng Sủng Là, làng văn hóa Lũng Cẩm – nơi quay bộ phim “Chuyện của Pao”.",
-          "12h30: Nghỉ ngơi ăn trưa tại làng Lô Lô Chải, chân cột cờ Lũng Cú.",
-          "14h00: Thực hiện hoạt động tình nguyện buổi chiều.",
-          "18h00: Nghỉ ngơi ăn tối.",
-          "20h00: Chương trình Gala Night giao lưu văn nghệ với bà con Lô Lô Chải.",
-          "22h30: Nghỉ ngơi.",
-        ],
-      ],
-    },
-  ];
-
-  const [data, setData] = useState([])
-  useEffect(() => {
-    (async () => {
-      await axios.get('http://54.169.253.94/api/activities')
-        .then(res => setData(res.data.data))
-        .catch(err => console.log(err))
-    }
-    )();
-  }, []);
-
-  console.log(data.data)
-
-
->>>>>>> dev
   return (
     <>
       <Header />
@@ -241,24 +127,13 @@ export default function DetailAct() {
         </div>
       </div>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
       {/* detail */}
       <div className="bg-white">
         {activities.map((activities, index) => (
           <div className="pt-6" key={index}>
             {/* Image gallery */}
             <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-<<<<<<< HEAD
               <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
-=======
-              <div
-
-                className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block"
-              >
->>>>>>> dev
                 <Image
                   src={activities.images[0].src}
                   alt={activities.images[0].alt}
@@ -539,75 +414,12 @@ export default function DetailAct() {
 
         <div className="mx-auto max-w-2xl lg:max-w-7xl">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-<<<<<<< HEAD
             {dataActivities.map((activity) => (
               <div
                 key={activity.id}
                 className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
               >
                 <Link href={`/pages/activities/${activity.id || ""}`}>
-=======
-
-            {
-              data.data && data.data?.map((item, index) => (
-
-                <div key={index}
-                  className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
-                >
-                  <Link href={`/pages/activities/${item.id}`}>
-                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
-                      <Image
-                        src={item.imageSrc}
-                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                        alt=""
-                        width={500}
-                        height={500}
-                      />
-                    </div>
-                    <div className="mt-4 w-full ">
-                      <div>
-                        <h3 className="text-2xl text-gray-700">
-                          <a href={item.href}>
-                            <span
-                              aria-hidden="true"
-                              className="absolute inset-0"
-                            />
-                            {item.title}
-                          </a>
-                        </h3>
-                        <p className="mt-1 text-sm text-gray-500">
-                          <span className="mr-10">Nơi khởi hành:</span>
-                          {item.address}
-                        </p>
-                        <p className="mt-1 text-sm text-gray-500">
-                          <span className="mr-10">Ngày khởi hành:</span>{" "}
-                          {item.timeStart}
-                        </p>
-                        <p className="mt-1 text-sm text-gray-500">
-                          <span className="mr-10">Ngày kết thúc:</span>
-                          {item.time_end}
-                        </p>
-                      </div>
-                    </div>
-                    <button
-                      type="button"
-                      className="text-white w-full mt-5 m-auto bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                    >
-                      Đăng kí tham gia
-                    </button>
-                  </Link>
-                </div>
-
-
-              ))
-            }
-            {/* {activitiess.map((activity) => (
-                <div
-                  key={activity.id}
-                  className="group relative bg-gray-100 shadow-xl px-4 py-4 rounded-md"
-                >
-                  <Link href={`/pages/activities/${activity.id}`}>
->>>>>>> dev
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
                     <Image
                       src={activity.imageSrc}
@@ -649,13 +461,8 @@ export default function DetailAct() {
                     Đăng kí tham gia
                   </button>
                 </Link>
-<<<<<<< HEAD
               </div>
             ))}
-=======
-                </div>
-            ))} */}
->>>>>>> dev
           </div>
         </div>
       </div>
