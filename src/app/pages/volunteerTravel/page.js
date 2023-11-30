@@ -13,6 +13,24 @@ import { instance } from "@/api";
 export default function VolunteerTravel() {
   const [dataActivity, setDataActivity] = useState([]);
 
+  // const [apiData, setApiData] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await api.get('/activity');
+  //       setApiData(response.data);
+  //       console.log("response.data: ", response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching data from API:', error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+
+  const [data, setData] = useState([])
   useEffect(() => {
     const getData = async () => {
       try {
