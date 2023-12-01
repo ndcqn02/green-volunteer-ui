@@ -69,14 +69,10 @@ export default function Hero() {
     try {
       let response = await instance.get(`/activities/getId/${id}`);
 
-      // Check if the response status is 401 (Unauthorized)
       if (response.status === 401) {
-        alert("You need to log in to access this content.");
-        // You can redirect the user to the login page or take any other appropriate action.
-        // Example: window.location.href = "/login";
+        alert("Bạn phải đăng nhập.");
+        window.location.href = "/login"
       } else {
-        // Handle the response data as needed
-        console.log(response.data);
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
@@ -151,15 +147,15 @@ export default function Hero() {
                           width="12"
                           height="12"
                           className="h-12 w-12 flex-none rounded-full "
-                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg"
                           alt=""
                         />
                         <div className=" flex items-center ml-3">
                           <p className="text-sm font-semibold leading-6 text-gray-900">
-                            Đức Cường
+                            User
                           </p>
                           <p className=" text-xs text-gray-500 ml-3">
-                            27/11/2023 -{" "}
+                            -{" "}
                             <time dateTime="2023-01-23T13:23Z">3h ago</time>
                           </p>
                         </div>

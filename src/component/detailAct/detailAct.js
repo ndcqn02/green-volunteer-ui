@@ -9,7 +9,6 @@ import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
-
 export default function DetailAct() {
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
@@ -17,8 +16,14 @@ export default function DetailAct() {
   const [order_desc, setOrder_desc] = useState("");
   const cancelButtonRef = useRef(null);
   const [images, setimages] = useState([]);
-  const [detail, setDetail] = useState({})
+  const [detail, setDetail] = useState({});
   const [dataActivities, setActivities] = useState([]);
+  const [userName, setUserName] = useState("");
+
+  let user_id;
+  if (typeof window !== "undefined") {
+    user_id = localStorage?.getItem("user_id");
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,10 +36,10 @@ export default function DetailAct() {
           `/activities?page=${"1"}&pageSize=${"4"}`
         );
         let response = await instance.get(`/activities/getId/${id}`);
-        const res = response.data.data
+        const res = response.data.data;
         setActivities(response1.data.data.data);
         setimages(res.images);
-        setDetail(res)
+        setDetail(res);
       } catch (error) {
         console.log(error);
       }
@@ -47,17 +52,40 @@ export default function DetailAct() {
 
       if (response.status === 200) {
         const link = response.data.data;
-        window.location.href = link
-  
+        window.location.href = link;
+
         setOpen1(false);
       } else {
-        console.error('API request failed with status:', response.status);
+        console.error("API request failed with status:", response.status);
       }
     } catch (error) {
       // Xử lý lỗi nếu cần
       console.error(error);
     }
   };
+
+  const handleFormRegister = async (formData) => {
+    try {
+      const res = await instance.post("/forms", formData);
+  
+      if (res.status === 200) {
+        const userConfirmed = window.confirm("Đăng kí hoạt động thành công!");
+        
+        if (userConfirmed) {
+          setOpen(false)
+        } else {
+          return
+        }
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        window.alert("Vui lòng nhập lại thông tin!");
+      } else {
+        console.error("API Request Error:", error);
+      }
+    }
+  };
+  
 
   return (
     <>
@@ -240,29 +268,45 @@ export default function DetailAct() {
                                   Xác nhận đăng kí
                                 </Dialog.Title>
                                 <div className="mt-2">
+                                  <label
+                                    htmlFor="userName"
+                                    className="block text-sm font-medium text-gray-800"
+                                  >
+                                    Tên người dùng:
+                                  </label>
+                                  <input
+                                    type="text"
+                                    id="userName"
+                                    name="userName"
+                                    className="mt-1 p-2 border rounded-md w-full"
+                                    value={userName}
+                                    onChange={(e) =>
+                                      setUserName(e.target.value)
+                                    }
+                                  />
                                   <p className="text-sm text-gray-800">
                                     Tên hoạt động:
                                   </p>
                                   <p className="text-sm text-gray-500">
-                                    {images.title}
+                                    {detail.title}
                                   </p>
                                   <p className="text-sm text-gray-800">
                                     Thời gian đi:
                                   </p>
                                   <p className="text-sm text-gray-500">
-                                    {images.timeStart}
+                                    {detail.timeStart}
                                   </p>
                                   <p className="text-sm text-gray-800">
                                     Thời gian về:
                                   </p>
                                   <p className="text-sm text-gray-500">
-                                    {images.time_end}
+                                    {detail.time_end}
                                   </p>
                                   <p className="text-sm text-gray-800">
                                     Địa điểm đến:
                                   </p>
                                   <p className="text-sm text-gray-500">
-                                    {images.address}
+                                    {detail.address}
                                   </p>
                                 </div>
                               </div>
@@ -272,7 +316,14 @@ export default function DetailAct() {
                             <button
                               type="button"
                               className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
-                              onClick={() => setOpen(false)}
+                              onClick={() => {
+                                handleFormRegister({
+                                  body: userName,
+                                  user_id: user_id,
+                                  activity_id: detail.id,
+                                  status: "Done",
+                                });
+                              }}
                             >
                               Đăng kí
                             </button>

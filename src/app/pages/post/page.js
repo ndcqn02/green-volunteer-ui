@@ -15,7 +15,7 @@ const people = [
     email: "leslie.alexander@example.com",
     role: "Co-Founder / CEO",
     imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg",
     lastSeen: "3h ago",
     lastSeenDateTime: "2023-01-23T13:23Z",
   },
@@ -185,15 +185,15 @@ export default function Post() {
                     width="500"
                     height="500"
                     className="h-12 w-12 flex-none rounded-full bg-gray-50"
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg"
                     alt=""
                   />
                   <div className=" flex items-center ml-3">
                     <p className="text-sm font-semibold leading-6 text-gray-900">
-                      Đức Cường
+                      User
                     </p>
                     <p className=" text-xs text-gray-500 ml-3">
-                      27/11/2023 -{" "}
+                      
                       <time dateTime="2023-01-23T13:23Z">3h ago</time>
                     </p>
                   </div>
@@ -224,15 +224,15 @@ export default function Post() {
                       width="500"
                       height="500"
                       className="h-12 w-12 flex-none rounded-full bg-gray-50"
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg"
                       alt=""
                     />
                     <div className=" flex items-center ml-3">
                       <p className="text-sm font-semibold leading-6 text-gray-900">
-                        Đức Cường
+                        User
                       </p>
                       <p className=" text-xs text-gray-500 ml-3">
-                        27/11/2023 -{" "}
+                        
                         <time dateTime="2023-01-23T13:23Z">3h ago</time>
                       </p>
                     </div>
@@ -309,15 +309,15 @@ export default function Post() {
                   width={200}
                   height={200}
                   className="h-12 w-12 flex-none rounded-full "
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg"
                   alt=""
                 />
                 <div className=" flex items-center ml-3">
                   <p className="text-sm font-semibold leading-6 text-gray-900">
-                    Đức Cường
+                    User
                   </p>
                   <p className=" text-xs text-gray-500 ml-3">
-                    27/11/2023 -{" "}
+                    
                     <time dateTime="2023-01-23T13:23Z">3h ago</time>
                   </p>
                 </div>
@@ -349,15 +349,15 @@ export default function Post() {
                         width={200}
                         height={200}
                         className="h-10 w-10 flex-none rounded-full "
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg"
                         alt=""
                       />
                       <div className=" flex items-center ml-3">
                         <p className="text-sm font-semibold leading-6 text-gray-900">
-                          Đức Cường
+                          User
                         </p>
                         <p className=" text-xs text-gray-500 ml-3">
-                          27/11/2023 -{" "}
+                          
                           <time dateTime="2023-01-23T13:23Z">3h ago</time>
                         </p>
                       </div>
