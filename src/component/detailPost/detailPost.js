@@ -89,7 +89,7 @@ export default function DetailPost() {
         <Image
           height="450"
           width="896"
-          src="https://veo.com.vn/wp-content/uploads/2023/11/tap-the-8.jpg"
+          src={dataActivities.details_image}
           alt=""
         ></Image>
 

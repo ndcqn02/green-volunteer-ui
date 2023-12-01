@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { instance } from "../../api/index";
@@ -9,7 +9,6 @@ import { RxDotFilled } from "react-icons/rx";
 
 export default function Hero() {
   const [dataActivity, setDataActivity] = useState([]);
-
 
   useEffect(() => {
     const getData = async () => {
@@ -68,11 +67,10 @@ export default function Hero() {
       if (response.status === 401) {
         alert("You need to log in to access this content.");
       } else if (response.status == 200) {
-        window.location.href = `/pages/activities/${id}`
+        window.location.href = `/pages/activities/${id}`;
       } else {
         console.log(response.data);
       }
-      
     } catch (error) {
       if (error.response && error.response.status === 401) {
         const userConfirmed = window.confirm(
@@ -82,7 +80,7 @@ export default function Hero() {
         if (userConfirmed) {
           window.location.href = "/pages/login";
         } else {
-          return
+          return;
         }
       } else {
         // Handle other errors if needed
@@ -135,23 +133,26 @@ export default function Hero() {
                 bạn để tạo ra ảnh hưởng tích cực.
               </p>
             </div>
-            <a className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' href={`/pages/listActivities`}>Xem tất cả</a>
+            <a
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              href={`/pages/listActivities`}
+            >
+              Xem tất cả
+            </a>
             <div className="flex flex-wrap mt-4">
               {dataActivity.map((activity, index) => (
                 <div key={index} className="xl:w-1/4 md:w-1/2 p-2 ">
                   <div className="bg-gray-200 p-6 rounded-lg">
                     <Image
-                      width="40"
-                      height="40"
-                      className="h-auto rounded w-full object-center mb-6"
-                      srcSet="url-to-small-image.jpg 400w,
-                      url-to-medium-image.jpg 800w,
-                      url-to-large-image.jpg 1200w"
-                      sizes="(max-width: 600px) 400px,
-                     (max-width: 1200px) 800px,
-                     1200px"
-                      src="https://veo.com.vn/wp-content/uploads/2023/10/WEB-SLIDER-1.jpg"
+                      width={720} 
+                      height={400} 
+                      className="h-800 rounded w-1200 object-center mb-6"
+                      src={activity.images[0].image_url}  
                       alt="content"
+                      srcSet={activity.images
+                        .map((image) => `${image.image_url} ${image.width}w`)
+                        .join(",")}
+                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
                     />
                     <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
                       {activity.title}
@@ -159,7 +160,10 @@ export default function Hero() {
                     <p className="leading-relaxed text-base mb-5 overflow-hidden line-clamp-3">
                       {activity.body}
                     </p>
-                    <a onClick={() => handelDetail(activity.id)} className=" text-blue-400 cursor-pointer">
+                    <a
+                      onClick={() => handelDetail(activity.id)}
+                      className=" text-blue-400 cursor-pointer"
+                    >
                       Xem chi tiết
                     </a>
                   </div>
@@ -190,11 +194,15 @@ export default function Hero() {
               <p className="leading-relaxed">Tình nguyện viên</p>
             </div>
             <div className="p-4 sm:w-1/2 lg:w-1/3 w-1/2">
-              <h2 className="title-font font-medium text-3xl text-gray-900">20+</h2>
+              <h2 className="title-font font-medium text-3xl text-gray-900">
+                20+
+              </h2>
               <p className="leading-relaxed">Điểm triển khai</p>
             </div>
             <div className="p-4 sm:w-1/2 lg:w-1/3 w-1/2">
-              <h2 className="title-font font-medium text-3xl text-gray-900">4</h2>
+              <h2 className="title-font font-medium text-3xl text-gray-900">
+                4
+              </h2>
               <p className="leading-relaxed">Giải thưởng</p>
             </div>
           </div>
@@ -347,14 +355,18 @@ export default function Hero() {
               Để lại phản hồi
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-              Hãy gửi cho chúng tôi những thứ chúng tôi chưa làm được, những điều chưa tốt để xây dựng cộng đồng lớn mạnh hơn
+              Hãy gửi cho chúng tôi những thứ chúng tôi chưa làm được, những
+              điều chưa tốt để xây dựng cộng đồng lớn mạnh hơn
             </p>
           </div>
           <div className="lg:w-1/2 md:w-2/3 mx-auto">
             <div className="flex flex-wrap -m-2">
               <div className="p-2 w-1/2">
                 <div className="relative">
-                  <label htmlFor="name" className="leading-7 text-sm text-gray-600">
+                  <label
+                    htmlFor="name"
+                    className="leading-7 text-sm text-gray-600"
+                  >
                     Name
                   </label>
                   <input
@@ -367,7 +379,10 @@ export default function Hero() {
               </div>
               <div className="p-2 w-1/2">
                 <div className="relative">
-                  <label htmlFor="email" className="leading-7 text-sm text-gray-600">
+                  <label
+                    htmlFor="email"
+                    className="leading-7 text-sm text-gray-600"
+                  >
                     Email
                   </label>
                   <input
@@ -380,7 +395,10 @@ export default function Hero() {
               </div>
               <div className="p-2 w-full">
                 <div className="relative">
-                  <label htmlFor="message" className="leading-7 text-sm text-gray-600">
+                  <label
+                    htmlFor="message"
+                    className="leading-7 text-sm text-gray-600"
+                  >
                     Message
                   </label>
                   <textarea

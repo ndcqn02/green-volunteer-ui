@@ -10,36 +10,6 @@ import Header from "@/component/header/header";
 import Footer from "@/component/footer/footer";
 import { format } from "date-fns";
 
-//   {
-//     name: "Cleaning up the Danube",
-//     description:
-//       "Out team is actively working to clean up the Danube River from pollution in order to restore its natural beauty",
-//     imageSrc:
-//       "https://images.unsplash.com/photo-1545641203-7d072a14e3b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJpdmVyfGVufDB8fDB8fHww",
-//     imageAlt:
-//       "Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.",
-//     href: "#",
-//   },
-//   {
-//     name: "Forest Garden",
-//     description:
-//       "Since prehistoric times hunter-gatherers might have influenced forests, for instance in Europe by Mesolithic people bringing favored plants like hazel with them.",
-//     imageSrc:
-//       "https://images.unsplash.com/photo-1590371509519-8594d8ff37a6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9yZXN0JTIwZ2FyZGVufGVufDB8fDB8fHww",
-//     imageAlt:
-//       "Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.",
-//     href: "#",
-//   },
-//   {
-//     name: "Become to valley",
-//     description:
-//       "Silicon Valley is a region in Northern California that is a global center for high technology and innovation",
-//     imageSrc:
-//       "https://images.unsplash.com/photo-1513029470192-107801f1fe49?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
-//     href: "#",
-//   },
-// ];
 
 export default function Hero() {
   const [dataActivity, setDataActivity] = useState([]);
@@ -161,7 +131,9 @@ export default function Hero() {
             {dataActivity.map((activity) => (
               <div key={activity.id} className="p-4 md:w-1/3">
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                  <img
+                  <Image
+                    width={400}
+                    height={400}
                     className="lg:h-48 md:h-36 w-full object-cover object-center"
                     src="https://dummyimage.com/720x400"
                     alt="blog"
