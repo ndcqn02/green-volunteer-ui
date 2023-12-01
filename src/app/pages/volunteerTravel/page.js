@@ -172,7 +172,7 @@ export default function VolunteerTravel() {
               <div className="h-full border-2 shadow-lg border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                 <Image
                   className="lg:h-48 md:h-36 w-full object-cover object-center"
-                  src={activity.images[0].image_url}
+                  src={activity.images[0]?.image_url}
                   alt="blog"
                   width="720"
                   height="400"
