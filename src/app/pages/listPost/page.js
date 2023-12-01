@@ -132,11 +132,11 @@ export default function Hero() {
               <div key={activity.id} className="p-4 md:w-1/3">
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                   <Image
+                    width={400}
+                    height={400}
                     className="lg:h-48 md:h-36 w-full object-cover object-center"
                     src="https://dummyimage.com/720x400"
                     alt="blog"
-                    width={500}
-                    height={500}
                   />
                   <div className="p-6">
                     <button onClick={() => handel(activity.id)}>

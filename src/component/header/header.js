@@ -155,16 +155,6 @@ export default function Header() {
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {token ? (
-            // If token exists in localStorage, render profile images and logout button
-            // <>
-            //   <button
-            //     type="button"
-            //     onClick={handleLogout}
-            //     className="text-white bg-gray-500 hover:bg-gray-900 rounded-full px-5 py-2.5 mr-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 text-sm font-semibold leading-6"
-            //   >
-            //     <UserIcon className="h-6 w-6" /> {/* Replace text with user icon */}
-            //   </button>
-            // </>
             <Menu as="div" className="relative inline-block text-left">
               <div>
                 <Menu.Button className=" rounded-full inline-flex w-full justify-center gap-x-1.5 bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">

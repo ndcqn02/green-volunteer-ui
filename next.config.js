@@ -3,7 +3,7 @@ const nextConfig = {
   images: {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    domains: ['tailwindui.com'],
+    domains: ['tailwindui.com', 'res.cloudinary.com'],
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {

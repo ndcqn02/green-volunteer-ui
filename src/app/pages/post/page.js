@@ -72,19 +72,17 @@ export default function Post() {
       try {
         const response1 = await instance.get(
           `/posts?page=${"1"}&pageSize=${"4"}&sort=timestamp:desc`
-        );
+        );       
         const response = await instance.get(
           `/posts?page=${"1"}&pageSize=${"50"}&sort=timestamp:desc`
         );
         setDataActivity(response.data.data.data);
         setEvent(response1.data.data.data);
         let data = response.data.data.data;
-        console.log(">>>>>>>>>>>", data);
 
         if (data.length > 0) {
           let valueNewest = data[data.length - 1];
           let valueNewest1 = data[data.length - 2];
-          console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<", valueNewest);
           setDataNewest(valueNewest);
           setDataNewest1(valueNewest1);
         }
@@ -165,7 +163,7 @@ export default function Post() {
               <div className="  w-3/5 h-[590px] flex flex-col relative">
                 <div className="bg-slate-200 w-full rounded-xl h-[370px] overflow-hidden">
                   <Image
-                    src="https://veo.com.vn/wp-content/uploads/2023/11/tap-the-8.jpg"
+                    src={dataNewest ? dataNewest.thumbnail_image : ""}
                     alt=""
                     width="576"
                     height="370"
@@ -175,7 +173,7 @@ export default function Post() {
                 <a
                   onClick={() => handelDetail(dataNewest.id)}
                 >
-                  <h1 className="text-xl mt-3 font-bold">
+                  <h1 className=" cursor-pointer text-xl mt-3 font-bold">
                     {dataNewest ? dataNewest.title : ""}
                   </h1>
                 </a>
@@ -206,7 +204,7 @@ export default function Post() {
                 <div className=" w-3/4 h-[500px] flex items-start flex-col">
                   <div className="bg-slate-200 w-full rounded-xl overflow-hidden">
                     <Image
-                      src="https://veo.com.vn/wp-content/uploads/2023/11/tap-the-8.jpg"
+                      src={dataNewest1 ? dataNewest1.thumbnail_image : ""}
                       alt=""
                       width="576"
                       height="370"
@@ -214,7 +212,7 @@ export default function Post() {
                     ></Image>
                   </div>
                   <a onClick={() => handelDetail(dataNewest1.id)}>
-                    <h1 className="text-xl mt-3 font-bold cursor-pointer">
+                    <h1 className="  text-xl mt-3 font-bold cursor-pointer">
                       {dataNewest1 ? dataNewest1.title : ""}
                     </h1>
                   </a>
@@ -291,7 +289,7 @@ export default function Post() {
             <div className="flex flex-col ">
               <div className=" w-full rounded-xl h-[370px] overflow-hidden">
                 <Image
-                  src="https://veo.com.vn/wp-content/uploads/2023/11/tap-the-8.jpg"
+                  src={dataNewest1 ? dataNewest1.thumbnail_image : ""}
                   alt=""
                   width="576"
                   height="370"
@@ -308,8 +306,8 @@ export default function Post() {
               </p>
               <div className=" flex mt-2 absolute bottom-0">
                 <Image
-                  width="12"
-                  height="12"
+                  width={200}
+                  height={200}
                   className="h-12 w-12 flex-none rounded-full "
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt=""
@@ -334,7 +332,7 @@ export default function Post() {
                   <div className="flex flex-col ">
                     <div className=" w-full rounded-xl h-[150px] overflow-hidden">
                       <Image
-                        src="https://veo.com.vn/wp-content/uploads/2023/11/tap-the-8.jpg"
+                        src={event ? event.thumbnail_image : ""}
                         alt=""
                         width="576"
                         height="370"
@@ -348,8 +346,8 @@ export default function Post() {
                     </a>
                     <div className=" flex mt-2 absolute bottom-0 mb-2">
                       <Image
-                        width="10"
-                        height="10"
+                        width={200}
+                        height={200}
                         className="h-10 w-10 flex-none rounded-full "
                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
