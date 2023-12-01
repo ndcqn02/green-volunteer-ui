@@ -137,11 +137,11 @@ export default function Hero() {
                     className="lg:h-48 md:h-36 w-full object-cover object-center"
                     src="https://dummyimage.com/720x400"
                     alt="blog"
+                    width={500}
+                    height={500}
                   />
                   <div className="p-6">
-                    <button
-                      onClick={() => handel(activity.id)}
-                    >
+                    <button onClick={() => handel(activity.id)}>
                       <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
                         {activity ? activity.title : ""}
                       </h1>

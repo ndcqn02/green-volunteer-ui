@@ -41,9 +41,8 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
   let token;
-
   if (typeof window !== "undefined") {
-    token = localStorage.getItem("authToken");
+    token = localStorage?.getItem("authToken");
   }
 
   const handleLogout = () => {

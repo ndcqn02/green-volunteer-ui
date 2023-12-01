@@ -87,7 +87,7 @@ export default function Hero() {
         if (userConfirmed) {
           window.location.href = "/pages/login";
         } else {
-          return
+          return;
         }
       } else {
         // Handle other errors if needed
